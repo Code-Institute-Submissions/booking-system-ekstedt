@@ -121,3 +121,42 @@ The general goal of the project is to create a website for restaurant Ekstedt, w
 **Responsiveness:**
 * Develop a responsive website that works seamslessly across various devices, including desktops, tablets and mobile devices.
 * Optimize the user interface for different screen sizes, ensuring a consistent and enjoyable experience.
+
+### Structure<hr>
+
+The website's structure is divided into nine different pages with content which is depended on authentication and if the user is client or a staff member.
+
+* **Home:** This is the entry point of the website where users can find excerpts and hyperlinks to history, menu and reservation pages.
+* **History:** This page provides users with information about restaurants history and past. Including information about its establishment and the chef's background and culinary philosophy.
+* **Menu:** The menu page for Ekstedt restaurant displays the set menu and available pairings. The page also includes a link to the restaurant's wine list on Star Wine List and a reservation button.
+* **Reservation:** The page includes information about reservation policy and a button for making a booking.
+* **Profile:** The page displays users' reservation history and allows them to manage their bookings.
+* **Contact:** Contact page of the restaurant Ekstedt includes info about the address, phone number, and email for reservations and general inquiries.
+* **Login:** A page where users need to log in to access and manage their accounts.
+* **Manage bookings:** This page is only accessible for staff members and allows them to manage reservations, view bookings, and update the status of tables.
+* **Register:** This page allows new users to register and create an account to the website.
+
+#### Flowchart
+
+The flowchart for the project was created with using <b>LucidChart</b>.<br><br>
+
+[![N|Solid](static/images/flow_diagram.png)](static/images/flow_diagram.png)<br><br>
+
+### Skeleton<hr>
+**Wireframes**<br>
+The wireframes for mobile and desktop were created by [Balsamiq](https://balsamiq.com/) tool and can be viewed <details>
+<summary>Here:</summary>
+<img src="..."><br>
+</details><br>
+
+**Database**<br>
+In the project ElephantSQL was used for PostgreSQL relational database in data storing.<br>
+<details>
+<summary>Initial Model</summary>
+<img src="static/images/initial_diagram.png"><br>
+</details>
+
+<details>
+<summary>Final Model</summary>
+<img src="..."><br>
+</details>
