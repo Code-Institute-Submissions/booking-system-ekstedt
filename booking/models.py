@@ -25,4 +25,4 @@ class Booking(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Booking for {self.customer_name} by {self.user.username} at {self.booking_time}"
+        return f"Booking for {self.customer_name} by {self.username.username} at {self.start_time} and {self.end_time}"
