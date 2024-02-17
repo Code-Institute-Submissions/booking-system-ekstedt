@@ -3,5 +3,5 @@ from django.views import generic
 from .models import Booking
 
 # Create your views here.
-class BookingIndex(generic.ListView):
-    model = Booking
+class HomePage(generic.TemplateView):
+    template_name="booking/index.html"
