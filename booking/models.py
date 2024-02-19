@@ -5,7 +5,6 @@ from cloudinary.models import CloudinaryField
 # Create your models here.
 
 class Table(models.Model):
-    id = models.IntegerField(unique=True, primary_key=True)
     table_number = models.IntegerField(unique=True)
     party_size = models.IntegerField()
 
@@ -13,7 +12,6 @@ class Table(models.Model):
         return f"Table {self.table_number}"
     
 class Booking(models.Model):
-    id = models.IntegerField(unique=True, primary_key=True)
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     customer_name = models.CharField(max_length = 255)
     date = models.DateField()

@@ -11,26 +11,26 @@ class BookingList(generic.ListView):
     context_object_name= "index"
 
     def get_queryset(self):
-        return Booking.objects.filter(date__lte=timezone.now()).order_by('-date')
+        return Booking.objects.all().order_by('-date')
 
 class BookingDetail(generic.DetailView):
     model = Booking
-    template_name = "details.html"
+    template_name = "booking/details.html"
 
 class CreateBooking(generic.edit.CreateView):
     model = Booking
     fields = ['id', 'username', 'customer_name', 'date', 'start_time', 'end_time', 'party_size', 'table', 'notes', 'created_at']
-    template_name = "create.html"
+    template_name = "booking/create.html"
 
 class UpdateBooking(generic.edit.UpdateView):
     model = Booking
     fields = ['id', 'username', 'customer_name', 'date', 'start_time', 'end_time', 'party_size', 'table', 'notes', 'created_at']
-    template_name = "update.html"
+    template_name = "booking/update.html"
 
 class DeleteBooking(generic.edit.DeleteView):
     model = Booking
     success_url = reverse_lazy('reservation:index')
-    template_name = "delete.html"
+    template_name = "booking/delete.html"
 
 #class HomePage(generic.TemplateView):
     #template_name="booking/index.html"

@@ -3,10 +3,10 @@
 {% block content %}
 <h2>Bookings</h2>
 <ul>
-    {% for booking in latest_booking_list %}
+    {% for booking in index %}
     <li>
-        <a href="{% url 'booking:detail' booking.id %}">
-            {{ booking.name }} on {{ booking.date }}
+        <a href="{% url 'booking:details' booking.id %}">
+            {{ booking.customer_name }} on {{ booking.date }} at {{ booking.start_time }}
         </a>
     </li>
     {% empty %}
