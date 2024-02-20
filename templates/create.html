@@ -3,6 +3,11 @@
 
 <h2>Create a booking:</h2>
 
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create a Booking</button>
+</form>
 <button><a href="#">Update a booking</a></button>
 <button><a href="#">Delete a booking</a></button>
 

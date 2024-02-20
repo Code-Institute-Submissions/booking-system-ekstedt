@@ -4,6 +4,7 @@ from django.views import generic
 from django.db import models
 from django.utils import timezone
 from .models import Booking, Table
+from .forms import BookingForm
 
 # Create your views here.
 class BookingList(generic.ListView):
@@ -19,7 +20,7 @@ class BookingDetail(generic.DetailView):
 
 class CreateBooking(generic.edit.CreateView):
     model = Booking
-    fields = ['id', 'username', 'customer_name', 'date', 'start_time', 'end_time', 'party_size', 'table', 'notes', 'created_at']
+    form_class = BookingForm
     template_name = "create.html"
 
 class UpdateBooking(generic.edit.UpdateView):
