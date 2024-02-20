@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 <h2>Booking details</h2>
-<p>details....</p>
+<p>Username: {{ booking.username }}</p>
+<p>Customer Name: {{ booking.customer_name }}</p>
+<p>Date: {{ booking.date }}</p> 
+<p>Start Time: {{ booking.start_time }}</p>
+<p>End Time: {{ booking.end_time }}</p>
+<p>Party Size: {{ booking.party_size }}</p>
+<p>Table: {{ booking.table }}</p>
+<p>Notes: {{ booking.notes }}</p>
+<p>Created At: {{ booking.created_at }}</p>
 
 {% endblock %}
