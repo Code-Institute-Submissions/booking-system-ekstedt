@@ -22,6 +22,7 @@ class CreateBooking(generic.edit.CreateView):
     model = Booking
     form_class = BookingForm
     template_name = "create.html"
+    success_url = reverse_lazy('booking:home')
 
 class UpdateBooking(generic.edit.UpdateView):
     model = Booking
