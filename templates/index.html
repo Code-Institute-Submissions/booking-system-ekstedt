@@ -13,5 +13,8 @@
     <li> No bookings as of yet.</li>
     {% endfor %}
 </ul>
+<button><a href="{% url 'booking:create_booking' %}">Create a Booking</a></button>
+<button><a href="#">Update a Booking</a></button>
+<button><a href="#">Delete a Booking</a></button>
 
 {% endblock %}
