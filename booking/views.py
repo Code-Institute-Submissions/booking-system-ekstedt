@@ -7,7 +7,7 @@ from .models import Booking, Table
 
 # Create your views here.
 class BookingList(generic.ListView):
-    template_name = "booking/index.html"
+    template_name = "index.html"
     context_object_name= "index"
 
     def get_queryset(self):
@@ -15,22 +15,22 @@ class BookingList(generic.ListView):
 
 class BookingDetail(generic.DetailView):
     model = Booking
-    template_name = "booking/details.html"
+    template_name = "details.html"
 
 class CreateBooking(generic.edit.CreateView):
     model = Booking
     fields = ['id', 'username', 'customer_name', 'date', 'start_time', 'end_time', 'party_size', 'table', 'notes', 'created_at']
-    template_name = "booking/create.html"
+    template_name = "create.html"
 
 class UpdateBooking(generic.edit.UpdateView):
     model = Booking
     fields = ['id', 'username', 'customer_name', 'date', 'start_time', 'end_time', 'party_size', 'table', 'notes', 'created_at']
-    template_name = "booking/update.html"
+    template_name = "update.html"
 
 class DeleteBooking(generic.edit.DeleteView):
     model = Booking
     success_url = reverse_lazy('reservation:index')
-    template_name = "booking/delete.html"
+    template_name = "delete.html"
 
 #class HomePage(generic.TemplateView):
     #template_name="booking/index.html"
