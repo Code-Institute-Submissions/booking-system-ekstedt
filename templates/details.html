@@ -1,8 +1,11 @@
 {% extends "base.html" %}
+
 {% block content %}
+
 <h2>Booking details</h2>
 <p>Username: {{ booking.username }}</p>
 <p>Customer Name: {{ booking.customer_name }}</p>
+<p>Customer Email: {{ booking.customer_email }}</p>
 <p>Date: {{ booking.date }}</p> 
 <p>Start Time: {{ booking.start_time }}</p>
 <p>End Time: {{ booking.end_time }}</p>
@@ -10,5 +13,7 @@
 <p>Table: {{ booking.table }}</p>
 <p>Notes: {{ booking.notes }}</p>
 <p>Created At: {{ booking.created_at }}</p>
+
+<button><a href="{% url 'booking:update' booking.id %}">Update the booking</a></button>
 
 {% endblock %}

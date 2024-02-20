@@ -26,8 +26,10 @@ class CreateBooking(generic.edit.CreateView):
 
 class UpdateBooking(generic.edit.UpdateView):
     model = Booking
-    fields = ['id', 'username', 'customer_name', 'date', 'start_time', 'end_time', 'party_size', 'table', 'notes', 'created_at']
+    form_class = BookingForm
     template_name = "update.html"
+    success_url = reverse_lazy('booking:home')
+
 
 class DeleteBooking(generic.edit.DeleteView):
     model = Booking
