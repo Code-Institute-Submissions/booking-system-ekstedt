@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+
 {% block content %}
 <h2>Bookings</h2>
 <ul>
-    {% for booking in index %}
+    {% for booking in bookings %}
     <li>
         <a href="{% url 'booking:details' booking.id %}">
             {{ booking.customer_name }} on {{ booking.date }} at {{ booking.start_time }}
@@ -13,6 +14,5 @@
     {% endfor %}
 </ul>
 <button><a href="{% url 'booking:create_booking' %}">Create a Booking</a></button>
-<button><a href="#">Update a Booking</a></button>
-<button><a href="#">Delete a Booking</a></button>
+
 {% endblock %}

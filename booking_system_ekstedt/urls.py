@@ -20,5 +20,5 @@ from booking.views import CreateBooking
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("booking.urls"), name='home'),
+    path('', include("booking.urls")),
 ]

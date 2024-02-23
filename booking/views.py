@@ -7,9 +7,13 @@ from .models import Booking, Table
 from .forms import BookingForm
 
 # Create your views here.
-class BookingList(generic.ListView):
+class HomePage(generic.TemplateView):
     template_name = "index.html"
-    context_object_name= "index"
+    context_object_name = "homepage"
+
+class BookingList(generic.ListView):
+    template_name = "booking.html"
+    context_object_name= "bookings"
 
     def get_queryset(self):
         return Booking.objects.all().order_by('-date')

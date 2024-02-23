@@ -1,18 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Bookings</h2>
-<ul>
-    {% for booking in index %}
-    <li>
-        <a href="{% url 'booking:details' booking.id %}">
-            {{ booking.customer_name }} on {{ booking.date }} at {{ booking.start_time }}
-        </a>
-    </li>
-    {% empty %}
-    <li> No bookings as of yet.</li>
-    {% endfor %}
-</ul>
-<button><a href="{% url 'booking:create_booking' %}">Create a Booking</a></button>
+<h2>HomePage</h2>
+<p>TEST</p>
 
 {% endblock %}
