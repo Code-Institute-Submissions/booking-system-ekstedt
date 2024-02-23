@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+{% if user.is_authenticated %}
+
 <h2>Bookings</h2>
 <ul>
     {% for booking in bookings %}
@@ -15,4 +18,8 @@
 </ul>
 <button><a href="{% url 'booking:create_booking' %}">Create a Booking</a></button>
 
+{% else %}
+<h2>Bookings</h2>
+    <p>TEST</p>
+{% endif %}
 {% endblock %}
