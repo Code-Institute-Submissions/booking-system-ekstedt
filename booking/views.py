@@ -33,8 +33,5 @@ class UpdateBooking(generic.edit.UpdateView):
 
 class DeleteBooking(generic.edit.DeleteView):
     model = Booking
-    success_url = reverse_lazy('reservation:index')
-    template_name = "delete.html"
-
-#class HomePage(generic.TemplateView):
-    #template_name="booking/index.html"
+    success_url = reverse_lazy('booking:home')
+    template_name = "delete_booking.html"
