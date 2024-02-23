@@ -17,6 +17,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -37,7 +40,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
-            <a class="navbar-brand me-auto" href="{% url 'booking:home' %}"><img src="static/images/ekstedt_tree.png"
+            <a class="navbar-brand me-auto" href="{% url 'booking:home' %}"><img src="{% static 'images/ekstedt_tree.png' %}"
                     alt="Ekstedt tree logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,21 +53,21 @@
                             href="{% url 'booking:home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white brand {% if request.path == login_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'booking:menu' %}">Menu</a>
+                        <a class="nav-link text-white brand {% if request.path == login_url %}active{% endif %}"
+                            aria-current="page" href="{% url 'booking:menu' %}">Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white brand {% if request.path == login_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'booking:history' %}">History</a>
+                        <a class="nav-link text-white brand {% if request.path == login_url %}active{% endif %}"
+                            aria-current="page" href="{% url 'booking:history' %}">History</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white brand {% if request.path == login_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'booking:contact' %}">Contact</a>
+                        <a class="nav-link text-white brand {% if request.path == login_url %}active{% endif %}"
+                            aria-current="page" href="{% url 'booking:contact' %}">Contact</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link text-white brand {% if request.path == logout_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'account_logout' %}">Logout</a>
+                        <a class="nav-link text-white brand {% if request.path == logout_url %}active{% endif %}"
+                            aria-current="page" href="{% url 'account_logout' %}">Logout</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white brand" aria-current="page"
@@ -72,12 +75,12 @@
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link text-white brand {% if request.path == login_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'account_login' %}">Login</a>
+                        <a class="nav-link text-white brand {% if request.path == login_url %}active{% endif %}"
+                            aria-current="page" href="{% url 'account_login' %}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white brand {% if request.path == signup_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'account_signup' %}">Register</a>
+                        <a class="nav-link text-white brand {% if request.path == signup_url %}active{% endif %}"
+                            aria-current="page" href="{% url 'account_signup' %}">Register</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white brand" aria-current="page"
