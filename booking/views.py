@@ -11,6 +11,18 @@ class HomePage(generic.TemplateView):
     template_name = "index.html"
     context_object_name = "homepage"
 
+class MenuPage(generic.TemplateView):
+    template_name = "menu.html"
+    context_object_name = "menu"
+
+class HistoryPage(generic.TemplateView):
+    template_name = "history.html"
+    context_object_name = "history"
+
+class ContactPage(generic.TemplateView):
+    template_name = "contact.html"
+    context_object_name = "contact"
+
 class BookingList(generic.ListView):
     template_name = "booking.html"
     context_object_name= "bookings"
