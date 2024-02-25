@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.db import models
@@ -28,7 +29,12 @@ class BookingList(generic.ListView):
     context_object_name= "bookings"
 
     def get_queryset(self):
-        return Booking.objects.all().order_by('-date')
+        if self.request.user.is_authenticated:
+            if self.request.user.is_staff:
+                return Booking.objects.all().order_by('-date')
+            else:
+                return Booking.objects.filter(username=self.request.user).order_by('-date')
+
 
 class BookingDetail(generic.DetailView):
     model = Booking
