@@ -46,6 +46,10 @@ class CreateBooking(generic.edit.CreateView):
     template_name = "create.html"
     success_url = reverse_lazy('booking:home')
 
+    def form_valid(self, form):
+        form.instance.username = self.request.user
+        return super().form_valid(form)
+
 class UpdateBooking(generic.edit.UpdateView):
     model = Booking
     form_class = BookingForm
