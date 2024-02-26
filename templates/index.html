@@ -7,7 +7,49 @@
     <img id="ekstedt_main_boxes" src="static/images/ekstedt_main_boxes.png" alt="ekstedt_boxes1">
 </div>
 
-<h2>HomePage</h2>
-<p>TEST</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-5">
+            <img src="static/images/twopeople.webp" class="img-fluid" alt="Two People Image">
+        </div>
+        <div class="col-5">
+            <div class="twopeople_text">
+                <br><br>
+                <h3>The History Behind Ekstedt</h3>
+                <p>Birchwood and smoke are our most powerful tools. -only natural heat, soot, ash, smoke, and fire.</p>
+                <br>
+                <p>A warm welcome to restaurant Ekstedt!</p>
+                <p><a href="{% url 'booking:history' %}">| Read more</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-5">
+                <div class="shrimpfiretext">
+                    <br><br>
+                    <p>”…a fire pit, a wood-fired oven, and a wood stove. Plenty of people said I'd made things too
+                        difficult for myself. But since then, I've continued to make things more and more challenging
+                        for myself and my team. Because that's what makes us better..."</p>
+                </div>
+            </div>
+            <div class="col-5">
+                <img src="static/images/shrimpfire.jpg" class="img-fluid" alt="Shrimp on fire">
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <div class="menutext text-left">
+                <h3>Our Menu</h3>
+                <p>At Ekstedt, we use ancient Scandinavian cooking techniques to make contemporary food with
+                    carefully selected seasonal ingredients and Swedish flavors.</p>
+                <p><a href="{% url 'booking:menu' %}">| Read more</a></p>
+                <img src="static/images/cookingarea.jpg" class="img-fluid" alt="Cooking area">
+                <h3><a href="{% url 'booking:bookings' %}">Make your reservation!</a></h3>
+            </div>
+        </div>
+    </div>
 
-{% endblock %}
+
+    {% endblock %}

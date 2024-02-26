@@ -25,7 +25,7 @@ class ContactPage(generic.TemplateView):
     context_object_name = "contact"
 
 class BookingList(generic.ListView):
-    template_name = "booking.html"
+    template_name = "bookings.html"
     context_object_name= "bookings"
 
     def get_queryset(self):

@@ -7,7 +7,31 @@
     <img id="ekstedt_menu_boxes" src="{% static 'images/menu_boxes.png' %}" alt="ekstedt_boxes2">
 </div>
 
-<h2>Menu</h2>
-<p>TEST</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-5">
+            <img src="/static/images/foodonplate.jpg" class="img-fluid" alt="Food on plate">
+        </div>
+        <div class="col-5">
+            <div class="menutext">
+                <br><br>
+                <h3>The History Behind Ekstedt</h3>
+                <p>At Ekstedt, we use ancient Scandinavian cooking techniques to make contemporary food. with carefully
+                    selected seasonal ingredients and Swedish flavors.</p>
+                <br>
+                <p>Our menus can, of course, be vegan and adapted to allergies. Notify us before your visit, and we
+                    will arrange that for you. Our menu follows the seasons and is constantly transforming.</p>
+                <br>    
+                <p> Set menu SEK 2.600
+                    Wine pairing SEK 1.600
+                    Juice pairing SEK 800
+                    Mixed pairing SEK 1.200</p>
+                <br>
+                <p>See our wine list at <a href="https://starwinelist.com/wine-place/ekstedt">Star Wine List</a></p>
+                <br>
+                <p><a href="{% url 'booking:bookings' %}">| Reservation</a></p>
+            </div>
+        </div>
+    </div>
 
-{% endblock %}
+    {% endblock %}

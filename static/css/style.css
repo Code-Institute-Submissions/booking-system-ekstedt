@@ -25,10 +25,11 @@ body, .navbar {
     height: 3rem;
 }
 
-body {
+main {
     margin: 0;
     padding: 0;
     color: white;
+    margin-bottom: 50px;
 }
 
 h2 {
@@ -41,13 +42,29 @@ p {
     font-size: 1.1rem
 }
 
+footer {
+    margin-top: auto;
+}
+
 .footer, .footer h5, .footer p, .social-links i {
     font-family: "Playfair Display", serif;
     color: white;
+    
 }
 
 /* INDEX/HOME */
 
 #hero-image {
     text-align: center;
+    margin: 200px auto;
 }
+
+#ekstedt_main_boxes {
+    max-width: 60%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+
+
