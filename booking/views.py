@@ -6,6 +6,7 @@ from django.db import models
 from django.utils import timezone
 from .models import Booking, Table
 from .forms import BookingForm
+from datetime import date
 
 # Create your views here.
 class HomePage(generic.TemplateView):
@@ -34,6 +35,11 @@ class BookingList(generic.ListView):
                 return Booking.objects.all().order_by('-date')
             else:
                 return Booking.objects.filter(username=self.request.user).order_by('-date')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['today'] = date.today()
+        return context
 
 
 class BookingDetail(generic.DetailView):
