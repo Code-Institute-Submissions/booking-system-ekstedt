@@ -2,14 +2,22 @@
 {% load static %}
 
 {% block content %}
+<br>
+<br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-5">
+            <h3>Create a Booking:</h3>
+            <br>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Create a Booking</button>
+            </form>
+            </div>
+        </div>
+    </div>
 
-<h2>Create a booking:</h2>
-
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Create a Booking</button>
-</form>
 
 
 {% endblock %}

@@ -36,6 +36,10 @@ p {
     font-size: 1.1rem
 }
 
+td {
+    color: white;
+}
+
 /* Layout */
 main {
     margin: 0;
@@ -55,6 +59,8 @@ main {
     display: block;
     margin: 0 auto;
 }
+
+
 
 /* Footer */
 

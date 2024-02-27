@@ -4,40 +4,63 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-<div class="row justify-content-center">
-    <div class="col-5">
-        <h3>Past Bookings</h3>
-        <ul>
-            {% for booking in bookings %}
-            {% if booking.date < today %}
-            <li>
-                <a href="{% url 'booking:details' booking.id %}">
-                    {{ booking.customer_name }} on {{ booking.date }} at {{ booking.start_time }}
-                </a>
-            </li>
-            {% endif %}
-            {% empty %}
-            <li> No past bookings.</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div class="col-5">
-        <h3>New Bookings</h3>
-        <ul>
-            {% for booking in bookings %}
-            {% if booking.date >= today %}
-            <li>
-                <a href="{% url 'booking:details' booking.id %}">
-                    {{ booking.customer_name }} on {{ booking.date }} at {{ booking.start_time }}
-                </a>
-            </li>
-            {% endif %}
-            {% empty %}
-            <li>No new bookings.</li>
-            {% endfor %}
-        </ul>
-    </div>
-    </div>
+{% if request.user.is_staff %}
+<div class="container">
+<br>
+<h4>Welcome Staff Member!</h4>
+<p>Here is the tables for today's and future bookings.</p>
+{% else %}
+<div class="container">
+<h4>Welcome {{ user.username }}!</h4>
+<p>Here is the table for your today's and future bookings.</p>
+{% endif %}
+<h5>Today's Bookings:</h5>
+<table class="table table-striped table-hover text-white">
+    <thead>
+        <tr>
+            <th>Name:</th>
+            <th>Date:</th>
+            <th>Start time:</th>
+            <th>Created at:</th>
+        </tr>
+    </thead>
+    {% for booking in bookings %}
+    {% if booking.date == today %}
+    <tbody class="text-white">
+        <tr>
+            <td><a href="{% url 'booking:details' booking.id %}">{{ booking.customer_name }}</a></td>
+            <td>{{ booking.date }}</td>
+            <td>{{ booking.start_time }}</td>
+            <td>{{ booking.created_at }}</td>
+        </tr>
+    </tbody>
+    {% endif %}
+    {% endfor %}
+</table>
+<h5>Future Bookings:</h5>
+<table class="table table-striped table-hover text-white">
+    <thead>
+        <tr>
+            <th>Name:</th>
+            <th>Date:</th>
+            <th>Start time:</th>
+            <th>Created at:</th>
+        </tr>
+    </thead>
+    {% for booking in bookings %}
+    {% if booking.date > today %}
+    <tbody class="text-white">
+        <tr>
+            <td><a href="{% url 'booking:details' booking.id %}">{{ booking.customer_name }}</a></td>
+            <td>{{ booking.date }}</td>
+            <td>{{ booking.start_time }}</td>
+            <td>{{ booking.created_at }}</td>
+        </tr>
+    </tbody>
+    {% endif %}
+    {% endfor %}
+</table>
+</div>
     <br>
     <br>
     <div class="row justify-content-center">

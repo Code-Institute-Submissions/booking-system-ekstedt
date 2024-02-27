@@ -160,3 +160,5 @@ In the project ElephantSQL was used for PostgreSQL relational database in data s
 <summary>Final Model</summary>
 <img src="..."><br>
 </details>
+
+Notes: I have decided that the previous bookings will be shown in user profile page instead of bookings page.
