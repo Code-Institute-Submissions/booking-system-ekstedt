@@ -4,6 +4,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Booking, Table
 from .forms import BookingForm
 from datetime import date
@@ -25,16 +26,15 @@ class ContactPage(generic.TemplateView):
     template_name = "contact.html"
     context_object_name = "contact"
 
-class BookingList(generic.ListView):
+class BookingList(LoginRequiredMixin, generic.ListView):
     template_name = "bookings.html"
     context_object_name= "bookings"
 
     def get_queryset(self):
-        if self.request.user.is_authenticated:
-            if self.request.user.is_staff:
-                return Booking.objects.all().order_by('-date')
-            else:
-                return Booking.objects.filter(username=self.request.user).order_by('-date')
+        if self.request.user.is_staff:
+            return Booking.objects.all().order_by('-date')
+        else:
+            return Booking.objects.filter(username=self.request.user).order_by('-date')
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -50,7 +50,7 @@ class CreateBooking(generic.edit.CreateView):
     model = Booking
     form_class = BookingForm
     template_name = "create.html"
-    success_url = reverse_lazy('booking:home')
+    success_url = reverse_lazy('booking:bookings')
 
     def form_valid(self, form):
         form.instance.username = self.request.user
@@ -60,10 +60,10 @@ class UpdateBooking(generic.edit.UpdateView):
     model = Booking
     form_class = BookingForm
     template_name = "update.html"
-    success_url = reverse_lazy('booking:home')
+    success_url = reverse_lazy('booking:bookings')
 
 
 class DeleteBooking(generic.edit.DeleteView):
     model = Booking
-    success_url = reverse_lazy('booking:home')
+    success_url = reverse_lazy('booking:bookings')
     template_name = "delete_booking.html"
