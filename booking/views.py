@@ -54,6 +54,11 @@ class CreateBooking(generic.edit.CreateView):
 
     def form_valid(self, form):
         form.instance.username = self.request.user
+
+        today = timezone.now().date()
+        if form.instance.date <= today:
+            form.add_error('date', 'Tables can only be booked for future dates.')
+
         return super().form_valid(form)
 
 class UpdateBooking(generic.edit.UpdateView):

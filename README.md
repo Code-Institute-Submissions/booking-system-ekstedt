@@ -162,3 +162,4 @@ In the project ElephantSQL was used for PostgreSQL relational database in data s
 </details>
 
 Notes: I have decided that the previous bookings will be shown in user profile page instead of bookings page.
+        Since I was not able to contact the restaurant management, then i had to improvise some aspects of the projects. Those were the table placements and seats including the usual booking times. This could be adjusted in future development.
