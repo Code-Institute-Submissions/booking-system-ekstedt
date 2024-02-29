@@ -7,7 +7,7 @@ from cloudinary.models import CloudinaryField
 
 class Table(models.Model):
     table_number = models.IntegerField(unique=True)
-    party_size = models.IntegerField(validators=[MinValueValidator (1), MaxValueValidator(6)])
+    number_of_seats = models.IntegerField(validators=[MinValueValidator (2), MaxValueValidator(12)], default=2)
 
     def __str__(self):
         return f"Table {self.table_number}"
