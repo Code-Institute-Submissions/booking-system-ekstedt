@@ -27,6 +27,10 @@ class BookingForm (forms.ModelForm):
             if date <= current_date + timezone.timedelta(days=60):
                 raise ValidationError('Bookings must be made at least 60 days in advance.')
 
+        # Check if the selected date is within valid restaurant dates (Tuesday to Saturday).
+        if date.weekday() not in [1, 2, 3, 4, 5]:
+            raise ValidationError('The restaurant is open from Tuesday to Saturday. Please select a valid date.')
+
         return date
 
     def clean(self):
