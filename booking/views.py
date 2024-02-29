@@ -52,12 +52,18 @@ class CreateBooking(generic.edit.CreateView):
     template_name = "create.html"
     success_url = reverse_lazy('booking:bookings')
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.request = self.request
+        return form
+
     def form_valid(self, form):
         form.instance.username = self.request.user
 
-        today = timezone.now().date()
-        if form.instance.date <= today:
-            form.add_error('date', 'Tables can only be booked for future dates.')
+        if not self.request.user.is_staff:
+            today = timezone.now().date()
+            if form.instance.date <= today:
+                form.add_error('date', 'Tables can only be booked for future dates.')
 
         return super().form_valid(form)
 

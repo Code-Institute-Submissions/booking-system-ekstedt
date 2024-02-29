@@ -22,8 +22,10 @@ class BookingForm (forms.ModelForm):
     def clean_date(self):
         date = self.cleaned_data['date']
         current_date = timezone.now().date()
+        user = self.request.user
 
-        if date <= current_date + timezone.timedelta(days=60):
-            raise ValidationError('Bookings must be made at least 60 days in advance.')
+        if not user.is_staff:
+            if date <= current_date + timezone.timedelta(days=60):
+                raise ValidationError('Bookings must be made at least 60 days in advance.')
 
         return date
