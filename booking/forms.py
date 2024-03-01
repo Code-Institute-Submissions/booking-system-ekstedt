@@ -13,10 +13,13 @@ class BookingForm (forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'email': forms.TextInput(attrs={'class': 'form-control'}),
             'date': DateInput(attrs={'type': 'date'}),
-            'start_time': forms.TextInput(attrs={'class': 'form-control'}),
+            'start_time': forms.Select(attrs={'class': 'form-control'}),
             'party_size': forms.TextInput(attrs={'class': 'form-control'}),
             'notes': forms.TextInput(attrs={'class': 'form-control'}),
         }
+
+    class Media:
+        js = ('static/js/booking_form.js')
 
     def clean_date(self):
         date = self.cleaned_data['date']

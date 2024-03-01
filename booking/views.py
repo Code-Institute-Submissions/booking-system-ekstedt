@@ -41,7 +41,6 @@ class BookingList(LoginRequiredMixin, generic.ListView):
         context['today'] = date.today()
         return context
 
-
 class BookingDetail(generic.DetailView):
     model = Booking
     template_name = "details.html"
@@ -64,7 +63,7 @@ class CreateBooking(generic.edit.CreateView):
             today = timezone.now().date()
             if form.instance.date <= today:
                 form.add_error('date', 'Tables can only be booked for future dates.')
-
+                
         return super().form_valid(form)
 
 class UpdateBooking(generic.edit.UpdateView):
