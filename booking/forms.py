@@ -43,10 +43,10 @@ class BookingForm (forms.ModelForm):
             number_of_seats__gte=party_size
         )
 
-        # Get bookings on the specified date
+        # Get bookings on the specified date excluding the current booking that is being updated
         bookings_on_requested_date = Booking.objects.filter(
             date=date
-        )
+        ).exclude(id=self.instance.id)
 
         # Iterate over bookings to get tables not booked
         available_tables = []

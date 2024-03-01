@@ -73,6 +73,10 @@ class UpdateBooking(generic.edit.UpdateView):
     template_name = "update.html"
     success_url = reverse_lazy('booking:bookings')
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.request = self.request
+        return form
 
 class DeleteBooking(generic.edit.DeleteView):
     model = Booking
