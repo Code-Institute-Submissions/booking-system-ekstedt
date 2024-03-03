@@ -48,6 +48,11 @@ class BookingForm (forms.ModelForm):
             number_of_seats__gte=party_size
         )
 
+        # Check if date and start_time are not none
+        if date is None or start_time is None:
+            
+            raise ValidationError("Please provide both date and start time.")
+
         # Converting start_time to datetime object for comparison
         start_datetime = datetime.combine(date, start_time)
 

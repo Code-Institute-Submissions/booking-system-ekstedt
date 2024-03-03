@@ -63,6 +63,13 @@
         {% endfor %}
         </tbody>
     </table>
+    <br>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-10 text-center">
+            <button><a href="{% url 'booking:create_booking' %}">Create a Booking</a></button>
+        </div>
+    </div>
     {% else %}
     <div class="container">
         <h4>Welcome {{ user.username }}!</h4>
