@@ -6,15 +6,8 @@
 <div class="container">
     {% if user.is_authenticated %}
     {% if request.user.is_staff %}
-    <br>
     <h4>Welcome Staff Member!</h4>
     <p>Here is the tables for today's and future bookings.</p>
-    {% else %}
-    <div class="container">
-        <h4>Welcome {{ user.username }}!</h4>
-        <p>Here is the table for your today's and future bookings.</p>
-    </div>
-    {% endif %}
     <h5>Today's Bookings:</h5>
     <table class="table table-striped table-hover text-white">
         <thead>
@@ -27,9 +20,9 @@
                 <th>Created at:</th>
             </tr>
         </thead>
-        {% for booking in bookings %}
-        {% if booking.date == today %}
         <tbody class="text-white">
+            {% for booking in bookings %}
+            {% if booking.date == today %}
             <tr>
                 <td><a href="{% url 'booking:details' booking.id %}">{{ booking.name }}</a></td>
                 <td>{{ booking.date }}</td>
@@ -38,10 +31,11 @@
                 <td>{{ booking.party_size }}</td>
                 <td>{{ booking.created_at }}</td>
             </tr>
+            {% endif %}
+            {% endfor %}
         </tbody>
-        {% endif %}
-        {% endfor %}
     </table>
+    <br>
     <h5>Future Bookings:</h5>
     <table class="table table-striped table-hover text-white">
         <thead>
@@ -54,9 +48,41 @@
                 <th>Created at:</th>
             </tr>
         </thead>
+        <tbody class="text-white"></tbody>
         {% for booking in bookings %}
         {% if booking.date > today %}
+        <tr>
+            <td><a href="{% url 'booking:details' booking.id %}">{{ booking.name }}</a></td>
+            <td>{{ booking.date }}</td>
+            <td>{{ booking.start_time }}</td>
+            <td>{{ booking.table }}</td>
+            <td>{{ booking.party_size }}</td>
+            <td>{{ booking.created_at }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="container">
+        <h4>Welcome {{ user.username }}!</h4>
+        <p>Here is the table for your bookings.</p>
+    </div>
+    <h5>Your Bookings:</h5>
+    <table class="table table-striped table-hover text-white">
+        <thead>
+            <tr>
+                <th>Name:</th>
+                <th>Date:</th>
+                <th>Start time:</th>
+                <th>Table number:</th>
+                <th>Number of guests:</th>
+                <th>Created at:</th>
+            </tr>
+        </thead>
         <tbody class="text-white">
+            {% for booking in bookings %}
+            {% if booking.user == username %}
             <tr>
                 <td><a href="{% url 'booking:details' booking.id %}">{{ booking.name }}</a></td>
                 <td>{{ booking.date }}</td>
@@ -65,9 +91,9 @@
                 <td>{{ booking.party_size }}</td>
                 <td>{{ booking.created_at }}</td>
             </tr>
+            {% endif %}
+            {% endfor %}
         </tbody>
-        {% endif %}
-        {% endfor %}
     </table>
     <br>
     <br>
@@ -76,6 +102,7 @@
             <button><a href="{% url 'booking:create_booking' %}">Create a Booking</a></button>
         </div>
     </div>
+    {% endif %}
     {% else %}
     <!-- Content for unauthenticated users !-->
     <div class="row justify-content-center">
@@ -84,14 +111,18 @@
                 <br>
                 <h3>Booking</h3>
                 <br>
-                <p>We accept reservations two months in advance and will release the tables one day at a time. If your
-                    preferred date is fully booked, please sign up for our waiting list, and we will contact you if any
+                <p>We accept reservations two months in advance and will release the tables one day at a time. If
+                    your
+                    preferred date is fully booked, please sign up for our waiting list, and we will contact you if
+                    any
                     table becomes available.
                     <br>
-                    Dining with us, we kindly ask for three hours of your time. For your information, we are a cash-free
+                    Dining with us, we kindly ask for three hours of your time. For your information, we are a
+                    cash-free
                     restaurant.
                     <br>
-                    Our restaurants limit is 6 people per party. Planning a dinner for 6 people or more? Please contact
+                    Our restaurants limit is 6 people per party. Planning a dinner for 6 people or more? Please
+                    contact
                     us
                     on
                     info@ekstedt.nu or +468 611 12 10.</p>
@@ -99,6 +130,6 @@
             </div>
         </div>
     </div>
-
     {% endif %}
-    {% endblock %}
+</div>
+{% endblock %}
