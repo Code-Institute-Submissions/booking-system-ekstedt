@@ -49,6 +49,8 @@
                 <th>Name:</th>
                 <th>Date:</th>
                 <th>Start time:</th>
+                <th>Table number:</th>
+                <th>Number of guests:</th>
                 <th>Created at:</th>
             </tr>
         </thead>
@@ -59,6 +61,8 @@
                 <td><a href="{% url 'booking:details' booking.id %}">{{ booking.name }}</a></td>
                 <td>{{ booking.date }}</td>
                 <td>{{ booking.start_time }}</td>
+                <td>{{ booking.table }}</td>
+                <td>{{ booking.party_size }}</td>
                 <td>{{ booking.created_at }}</td>
             </tr>
         </tbody>

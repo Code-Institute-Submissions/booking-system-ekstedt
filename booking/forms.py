@@ -3,6 +3,7 @@ from django.forms import DateInput
 from django.core.exceptions import ValidationError
 from django.utils import timezone
 from .models import Booking, Table
+from datetime import datetime
 
 class BookingForm (forms.ModelForm):
     class Meta:
@@ -39,6 +40,7 @@ class BookingForm (forms.ModelForm):
     def clean(self):
         cleaned_data = super().clean()
         date = cleaned_data.get('date')
+        start_time = cleaned_data.get('start_time')
         party_size = cleaned_data.get('party_size')
 
         # Filter tables with capacity greater or equal to the party size
@@ -46,9 +48,14 @@ class BookingForm (forms.ModelForm):
             number_of_seats__gte=party_size
         )
 
+        # Converting start_time to datetime object for comparison
+        start_datetime = datetime.combine(date, start_time)
+
         # Get bookings on the specified date excluding the current booking that is being updated
-        bookings_on_requested_date = Booking.objects.filter(
-            date=date
+        bookings_on_requested_datetime = Booking.objects.filter(
+            date=date,
+            start_time__lte=start_datetime,
+            start_time__gte=start_datetime - self.get_time_window(date)
         ).exclude(id=self.instance.id)
 
         # Iterate over bookings to get tables not booked
@@ -56,7 +63,7 @@ class BookingForm (forms.ModelForm):
         for table in tables_with_capacity:
             is_table_booked = any(
                 table.id == booking.table.id
-                for booking in bookings_on_requested_date
+                for booking in bookings_on_requested_datetime
             )
             if not is_table_booked:
                 available_tables.append(table)
@@ -70,3 +77,12 @@ class BookingForm (forms.ModelForm):
         self.instance.table = chosen_table
 
         return cleaned_data
+
+    def get_time_window(self, date):
+        # Adjust the time window based on the day of the week
+        if date.weekday() == 5: # Saturday
+            return timezone.timedelta(minutes=30)
+        elif date.weekday() in [1, 2, 3, 4]:
+            return timezone.timedelta(minutes=45)
+        else:
+            return timezone.timedelta(minutes=60)
