@@ -2,11 +2,15 @@
 {% load static %}
 
 {% block content %}
-<h2>Update the booking:</h2>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update</button>
-</form>
-<script src="{% static 'js/booking_form.js' %}"></script>
+<div class="row justify-content-center">
+    <div class="col-md-8 mt-5 text-left">
+        <h2>Update the booking:</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Update</button>
+        </form>
+        <script src="{% static 'js/booking_form.js' %}"></script>
+    </div>
+</div>
 {% endblock %}
