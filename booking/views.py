@@ -8,6 +8,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Booking, Table
 from .forms import BookingForm
 from datetime import date
+from .messages import (
+    BOOKING_SUCCESSFUL_CREATE,
+    BOOKING_SUCCESSFUL_UPDATE,
+    BOOKING_SUCCESSFUL_DELETE,
+)
+from django.contrib import messages
 
 # Create your views here.
 class HomePage(generic.TemplateView):
@@ -64,7 +70,11 @@ class CreateBooking(generic.edit.CreateView):
             if form.instance.date <= today:
                 form.add_error('date', 'Tables can only be booked for future dates.')
                 
-        return super().form_valid(form)
+        response = super().form_valid(form)
+
+        messages.success(self.request, BOOKING_SUCCESSFUL_CREATE)
+
+        return response
 
 class UpdateBooking(generic.edit.UpdateView):
     model = Booking
@@ -77,7 +87,21 @@ class UpdateBooking(generic.edit.UpdateView):
         form.request = self.request
         return form
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+
+        messages.success(self.request, BOOKING_SUCCESSFUL_UPDATE)
+
+        return response
+
 class DeleteBooking(generic.edit.DeleteView):
     model = Booking
     success_url = reverse_lazy('booking:bookings')
     template_name = "delete_booking.html"
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+
+        messages.success(self.request, BOOKING_SUCCESSFUL_DELETE)
+
+        return response

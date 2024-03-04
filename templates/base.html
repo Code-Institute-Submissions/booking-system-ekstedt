@@ -96,7 +96,15 @@
     </nav>
 
     <main class="flex-shrink-0 main-bg">
-
+        <div class="container">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}

@@ -5,18 +5,16 @@
 <div class="row justify-content-center">
     <div class="col-md-8 mt-5 text-left">
         <h2>Booking details</h2>
-        <p>Customer Name: {{ booking.customer_name }}</p>
-        <p>Customer Email: {{ booking.customer_email }}</p>
+        <p>Customer Name: {{ booking.name }}</p>
+        <p>Customer Email: {{ booking.email }}</p>
         <p>Date: {{ booking.date }}</p>
         <p>Start Time: {{ booking.start_time }}</p>
-        <p>End Time: {{ booking.end_time }}</p>
         <p>Party Size: {{ booking.party_size }}</p>
         <p>Table: {{ booking.table }}</p>
         <p>Notes: {{ booking.notes }}</p>
         <p>Created At: {{ booking.created_at }}</p>
+        <button><a href="{% url 'booking:update' booking.id %}">Update the booking</a></button>
+        <button><a href="{% url 'booking:delete_booking' booking.id %}">Delete the Booking</a></button>
     </div>
 </div>
-<button><a href="{% url 'booking:update' booking.id %}">Update the booking</a></button>
-<button><a href="{% url 'booking:delete_booking' booking.id %}">Delete the Booking</a></button>
-
 {% endblock %}

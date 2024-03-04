@@ -2,16 +2,19 @@
 {% load static %}
 
 {% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 mt-5 text-left">
+        <h2>Delete the Booking</h2>
 
-<h2>Delete the Booking</h2>
+        <p>Are you sure that you wish the to delete the booking?</p>
 
-<p>Are you sure that you wish the to delete the booking?</p>
-
-<form action="" method="POST">
-    {% csrf_token %}
-    <input type="submit" value="Confirm Delete">
-</form>
-<button><a href="{% url 'booking:update' booking.id %}">Update the booking</a></button>
-<button><a href="{% url 'booking:bookings' %}">Cancel the booking deletion</a></button>
-
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Confirm Delete">
+        </form>
+        <br>
+        <button><a href="{% url 'booking:update' booking.id %}">Update the booking</a></button>
+        <button><a href="{% url 'booking:bookings' %}">Cancel the booking deletion</a></button>
+    </div>
+</div>
 {% endblock %}
