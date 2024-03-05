@@ -17,6 +17,7 @@
                 <th>Start time:</th>
                 <th>Table number:</th>
                 <th>Number of guests:</th>
+                <th>Status:</th>
                 <th>Created at:</th>
             </tr>
         </thead>
@@ -29,6 +30,7 @@
                 <td>{{ booking.start_time }}</td>
                 <td>{{ booking.table }}</td>
                 <td>{{ booking.party_size }}</td>
+                <td>{{ booking.status }}</td>
                 <td>{{ booking.created_at }}</td>
             </tr>
             {% endif %}
@@ -45,6 +47,7 @@
                 <th>Start time:</th>
                 <th>Table number:</th>
                 <th>Number of guests:</th>
+                <th>Status:</th>
                 <th>Created at:</th>
             </tr>
         </thead>
@@ -57,6 +60,7 @@
             <td>{{ booking.start_time }}</td>
             <td>{{ booking.table }}</td>
             <td>{{ booking.party_size }}</td>
+            <td>{{ booking.status }}</td>
             <td>{{ booking.created_at }}</td>
         </tr>
         {% endif %}
@@ -84,6 +88,7 @@
                 <th>Start time:</th>
                 <th>Table number:</th>
                 <th>Number of guests:</th>
+                <th>Status:</th>
                 <th>Created at:</th>
             </tr>
         </thead>
@@ -96,6 +101,7 @@
                 <td>{{ booking.start_time }}</td>
                 <td>{{ booking.table }}</td>
                 <td>{{ booking.party_size }}</td>
+                <th>{{ booking.status }}</th>
                 <td>{{ booking.created_at }}</td>
             </tr>
             {% endif %}

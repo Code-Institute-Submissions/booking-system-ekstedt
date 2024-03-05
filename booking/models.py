@@ -13,6 +13,12 @@ class Table(models.Model):
         return f"Table {self.table_number}"
     
 class Booking(models.Model):
+    STATUS_CHOICES = [
+        ('Pending', 'Pending'),
+        ('Confirmed', 'Confirmed'),
+        ('Rejected', 'Rejected'),
+    ]
+
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length = 255)
     email = models.EmailField(max_length= 150, blank=True, null= True)
@@ -22,6 +28,15 @@ class Booking(models.Model):
     table = models.ForeignKey(Table, on_delete=models.CASCADE)
     notes = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Pending')
 
     def __str__(self):
         return self.name
+
+    def confirm_booking(self):
+        self.status = 'Confirmed'
+        self.save()
+
+    def reject_booking(self):
+        self.status = 'Rejected'
+        self.save()
