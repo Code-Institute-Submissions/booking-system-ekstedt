@@ -43,37 +43,43 @@ class BookingForm (forms.ModelForm):
         start_time = cleaned_data.get('start_time')
         party_size = cleaned_data.get('party_size')
 
-        # Filter tables with capacity greater or equal to the party size
+        # Checks if date and start_time are not none
+        if date is None or start_time is None or party_size is None:
+            
+            raise ValidationError("Please provide both date and start time, and party size.")
+
+        # Filters tables with capacity greater or equal to the party size
         tables_with_capacity = Table.objects.filter(
             number_of_seats__gte=party_size
         )
 
-        # Check if date and start_time are not none
-        if date is None or start_time is None:
-            
-            raise ValidationError("Please provide both date and start time.")
-
-        # Converting start_time to datetime object for comparison
+        # Converts start_time to datetime object for comparison
         start_datetime = datetime.combine(date, start_time)
 
-        # Get bookings on the specified date excluding the current booking that is being updated
+        # Gets bookings on the specified date excluding the current booking that is being updated
         bookings_on_requested_datetime = Booking.objects.filter(
             date=date,
             start_time__lte=start_datetime,
             start_time__gte=start_datetime - self.get_time_window(date)
         ).exclude(id=self.instance.id)
 
-        # Iterate over bookings to get tables not booked
-        available_tables = []
-        for table in tables_with_capacity:
-            is_table_booked = any(
-                table.id == booking.table.id
-                for booking in bookings_on_requested_datetime
-            )
-            if not is_table_booked:
-                available_tables.append(table)
+        # Gets booked tables for the specified datetime
+        booked_tables = [booking.table.id for booking in bookings_on_requested_datetime]
 
-        # Throw validation error if no tables are available
+        # Filters available tables by excluding booked tables
+        available_tables = tables_with_capacity.exclude(id__in=booked_tables)
+
+        # Iterates over bookings to get tables not booked
+        #available_tables = []
+        #for table in tables_with_capacity:
+            #is_table_booked = any(
+                #table.id == booking.table.id
+                # booking in bookings_on_requested_datetime
+            #)
+            #if not is_table_booked:
+                #available_tables.append(table)
+
+        # Throws validation error if no tables are available
         if not available_tables:
             raise ValidationError("Sorry! There are no tables available for the selected date and guest number.")  
 
@@ -84,7 +90,7 @@ class BookingForm (forms.ModelForm):
         return cleaned_data
 
     def get_time_window(self, date):
-        # Adjust the time window based on the day of the week
+        # Adjusts the time window based on the day of the week
         if date.weekday() == 5: # Saturday
             return timezone.timedelta(minutes=30)
         elif date.weekday() in [1, 2, 3, 4]:
