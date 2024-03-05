@@ -45,8 +45,12 @@ class BookingForm (forms.ModelForm):
 
         # Checks if date and start_time are not none
         if date is None or start_time is None or party_size is None:
-            
             raise ValidationError("Please provide both date and start time, and party size.")
+
+        # Ensures the selected date is not in the past
+        current_date = timezone.now().date()
+        if date < current_date:
+            raise ValidationError("Booking date cannot be in the past. Choose a valid date.")
 
         # Filters tables with capacity greater or equal to the party size
         tables_with_capacity = Table.objects.filter(
@@ -68,16 +72,6 @@ class BookingForm (forms.ModelForm):
 
         # Filters available tables by excluding booked tables
         available_tables = tables_with_capacity.exclude(id__in=booked_tables)
-
-        # Iterates over bookings to get tables not booked
-        #available_tables = []
-        #for table in tables_with_capacity:
-            #is_table_booked = any(
-                #table.id == booking.table.id
-                # booking in bookings_on_requested_datetime
-            #)
-            #if not is_table_booked:
-                #available_tables.append(table)
 
         # Throws validation error if no tables are available
         if not available_tables:
