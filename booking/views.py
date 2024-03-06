@@ -45,6 +45,10 @@ class BookingList(LoginRequiredMixin, generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['today'] = date.today()
+
+        user_messages = messages.get_messages(self.request)
+        context['user_messages'] = user_messages
+        
         return context
 
 class BookingDetail(generic.DetailView):

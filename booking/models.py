@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import User
+from django.utils import timezone
 from cloudinary.models import CloudinaryField
 
 # Create your models here.
@@ -29,14 +30,18 @@ class Booking(models.Model):
     notes = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Pending')
+    confirmation_date = models.DateTimeField(null=True, blank=True)
+    rejection_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.name
 
     def confirm_booking(self):
         self.status = 'Confirmed'
+        self.confirmation_date = timezone.now()
         self.save()
 
     def reject_booking(self):
         self.status = 'Rejected'
+        self.rejection_date = timezone.now()
         self.save()

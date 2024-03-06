@@ -1,18 +1,21 @@
-from django.contrib import admin
+from django.contrib import admin, messages
 from .models import Table, Booking
+from .signals import send_notification_on_confirmation
 
 # Register your models here.
 
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ['name', 'date', 'start_time', 'party_size', 'table', 'status']
+    list_display = ['username', 'name', 'date', 'start_time', 'party_size', 'table', 'status', 'created_at']
     actions = ['confirm_selected_bookings', 'reject_selected_bookings']
 
-    def confirm_selected_bookings(modeladmin, request, queryset):
-        queryset.update(status='Confirmed')
+    def confirm_selected_bookings(self, request, queryset):
+        for booking in queryset:
+            if booking.status == 'Pending':
+                booking.confirm_booking()
 
     confirm_selected_bookings.short_description = "Confirm selected bookings"
 
-    def reject_selected_bookings(modeladmin, request, queryset):
+    def reject_selected_bookings(self, request, queryset):
         queryset.update(status='Rejected')
 
     reject_selected_bookings.short_description = "Reject selected bookings"
