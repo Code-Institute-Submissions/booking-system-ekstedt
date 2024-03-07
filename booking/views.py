@@ -49,6 +49,15 @@ class BookingList(LoginRequiredMixin, generic.ListView):
         user_messages = messages.get_messages(self.request)
         context['user_messages'] = user_messages
         
+        confirmed_bookings = Booking.objects.filter(
+            username=self.request.user,
+            status='Confirmed',
+            date__gte=timezone.now().date()
+        ).exists()
+
+        if confirmed_bookings:
+            messages.success(self.request, 'Your booking has been confirmed!')
+
         return context
 
 class BookingDetail(generic.DetailView):
