@@ -1,6 +1,5 @@
 from django.contrib import admin, messages
 from .models import Table, Booking
-from .signals import send_notification_on_confirmation
 
 # Register your models here.
 
