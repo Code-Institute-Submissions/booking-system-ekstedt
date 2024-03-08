@@ -26,19 +26,29 @@ body, .navbar {
 }
 
 /* Typography */
-h3 {
+h1 {
     font-family: 'Playfair Display', sans-serif;
-    font-size: 4rem;
+    font-size: 3.5rem;
 }
 
-p {
-    font-family: 'Lato', sans-serif;
-    font-size: 1.1rem
+h2 {
+    font-family: 'Playfair Display', sans-serif;
+    font-size: 3rem;
+}
+
+h3 {
+    font-family: 'Playfair Display', sans-serif;
+    font-size: 1.5rem;
 }
 
 h4 {
     font-family: 'Lato', sans-serif;
     font-size: 1.3rem;
+}
+
+p {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem
 }
 
 th, td {
@@ -103,19 +113,19 @@ footer {
 
 @media screen and (max-width: 768px) {
     h1 {
-        font-size: 4rem;
-    }
-
-    h2 {
         font-size: 3rem;
     }
 
-    h3 {
+    h2 {
         font-size: 2rem;
     }
 
+    h3 {
+        font-size: 1.5rem;
+    }
+
     p {
-        font-size: 1rem;
+        font-size: 0.7rem;
     }
 
     #navbar {

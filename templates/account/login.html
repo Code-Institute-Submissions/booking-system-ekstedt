@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% load i18n %}
 {% load account socialaccount %}
 
@@ -10,7 +10,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
-            <h3>{% trans "Sign In" %}</h3>
+            <h2>{% trans "Sign In" %}</h2>
             <br>
             <p>{% blocktrans %}Welcome to the Ekstedt Restaurant login page. To make a booking or see your profile, please log in. If
                 you
