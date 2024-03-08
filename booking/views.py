@@ -4,7 +4,10 @@ from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.decorators import method_decorator
 from .models import Booking, Table
 from .forms import BookingForm
 from datetime import date
@@ -63,6 +66,29 @@ class BookingList(LoginRequiredMixin, generic.ListView):
 class BookingDetail(generic.DetailView):
     model = Booking
     template_name = "details.html"
+
+
+@method_decorator(login_required, name='dispatch')
+class Profile(generic.DetailView):
+    model = User
+    template_name = "profile.html"
+    context_object_name= "profile"
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        past_bookings = Booking.objects.filter(
+            username=self.request.user,
+            date__lt=timezone.now().date()
+        ).order_by('-date')
+
+        context['past_bookings'] = past_bookings
+
+        return context
+
 
 class CreateBooking(generic.edit.CreateView):
     model = Booking

@@ -76,6 +76,10 @@
                         <a class="nav-link text-white brand" aria-current="page"
                             href="{% url 'booking:bookings' %}">Booking</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white brand" aria-current="page"
+                            href="{% url 'booking:profile' %}">Profile</a>
+                    </li>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link text-white brand {% if request.path == login_url %}active{% endif %}"

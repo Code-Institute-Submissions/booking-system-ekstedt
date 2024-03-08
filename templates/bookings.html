@@ -3,35 +3,35 @@
 
 {% block content %}
 
-<div class="container-fluid table-responsive">
+<div class="container-fluid">
     {% if user.is_authenticated %}
     {% if request.user.is_staff %}
     <h2>Welcome Staff Member!</h2>
     <p>Here is the tables for today's and future bookings.</p>
     <h3>Today's Bookings:</h3>
-    <table class="table table-striped table-hover text-white d-flex flex-wrap">
+    <table class="table table-striped table-hover text-white table-responsive">
         <thead>
             <tr>
-                <th class="d-none d-lg-table-cell">Name:</th>
-                <th class="d-none d-lg-table-cell">Date:</th>
-                <th class="d-none d-lg-table-cell">Start time:</th>
-                <th class="d-none d-lg-table-cell">Table number:</th>
-                <th class="d-none d-lg-table-cell">Number of guests:</th>
-                <th class="d-none d-lg-table-cell">Status:</th>
-                <th class="d-none d-lg-table-cell">Created at:</th>
+                <th class="d-md md-table-cell">Name:</th>
+                <th class="d-md md-table-cell">Date:</th>
+                <th class="d-md md-table-cell">Start time:</th>
+                <th class="d-md md-table-cell">Table number:</th>
+                <th class="d-md md-table-cell">Number of guests:</th>
+                <th class="d-md md-table-cell">Status:</th>
+                <th class="d-md md-table-cell">Created at:</th>
             </tr>
         </thead>
         <tbody class="text-white">
             {% for booking in bookings %}
             {% if booking.date == today %}
             <tr>
-                <td><a href="{% url 'booking:details' booking.id %}">{{ booking.name }}</a></td>
-                <td>{{ booking.date }}</td>
-                <td>{{ booking.start_time }}</td>
-                <td>{{ booking.table }}</td>
-                <td>{{ booking.party_size }}</td>
-                <td>{{ booking.status }}</td>
-                <td>{{ booking.created_at }}</td>
+                <td class="d-md md-table-cell"><a href="{% url 'booking:details' booking.id %}">{{ booking.name }}</a></td>
+                <td class="d-md md-table-cell">{{ booking.date }}</td>
+                <td class="d-md md-table-cell">{{ booking.start_time }}</td>
+                <td class="d-md md-table-cell">{{ booking.table }}</td>
+                <td class="d-md md-table-cell">{{ booking.party_size }}</td>
+                <td class="d-md md-table-cell">{{ booking.status }}</td>
+                <td class="d-md md-table-cell">{{ booking.created_at }}</td>
             </tr>
             {% endif %}
             {% endfor %}
@@ -39,29 +39,29 @@
     </table>
     <br>
     <h3>Future Bookings:</h3>
-    <table class="table table-striped table-hover text-white">
+    <table class="table table-striped table-hover text-white table-responsive">
         <thead>
             <tr>
-                <th>Name:</th>
-                <th>Date:</th>
-                <th>Start time:</th>
-                <th>Table number:</th>
-                <th>Number of guests:</th>
-                <th>Status:</th>
-                <th>Created at:</th>
+                <th class="d-md md-table-cell">Name:</th>
+                <th class="d-md md-table-cell">Date:</th>
+                <th class="d-md md-table-cell">Start time:</th>
+                <th class="d-md md-table-cell">Table number:</th>
+                <th class="d-md md-table-cell">Number of guests:</th>
+                <th class="d-md md-table-cell">Status:</th>
+                <th class="d-md md-table-cell">Created at:</th>
             </tr>
         </thead>
         <tbody class="text-white"></tbody>
         {% for booking in bookings %}
         {% if booking.date > today %}
         <tr>
-            <td><a href="{% url 'booking:details' booking.id %}">{{ booking.name }}</a></td>
-            <td>{{ booking.date }}</td>
-            <td>{{ booking.start_time }}</td>
-            <td>{{ booking.table }}</td>
-            <td>{{ booking.party_size }}</td>
-            <td>{{ booking.status }}</td>
-            <td>{{ booking.created_at }}</td>
+            <td class="d-md md-table-cell"><a href="{% url 'booking:details' booking.id %}">{{ booking.name }}</a></td>
+            <td class="d-md md-table-cell">{{ booking.date }}</td>
+            <td class="d-md md-table-cell">{{ booking.start_time }}</td>
+            <td class="d-md md-table-cell">{{ booking.table }}</td>
+            <td class="d-md md-table-cell">{{ booking.party_size }}</td>
+            <td class="d-md md-table-cell">{{ booking.status }}</td>
+            <td class="d-md md-table-cell">{{ booking.created_at }}</td>
         </tr>
         {% endif %}
         {% endfor %}
@@ -80,29 +80,29 @@
         <p>Here is the table for your bookings.</p>
     </div>
     <h3>Your Bookings:</h3>
-    <table class="table table-striped table-hover text-white">
+    <table class="table table-striped table-hover text-white table-responsive">
         <thead>
             <tr>
-                <th>Name:</th>
-                <th>Date:</th>
-                <th>Start time:</th>
-                <th>Table number:</th>
-                <th>Number of guests:</th>
-                <th>Status:</th>
-                <th>Created at:</th>
+                <th class="d-md md-table-cell">Name:</th>
+                <th class="d-md md-table-cell">Date:</th>
+                <th class="d-md md-table-cell">Start time:</th>
+                <th class="d-md md-table-cell">Table number:</th>
+                <th class="d-md md-table-cell">Number of guests:</th>
+                <th class="d-md md-table-cell">Status:</th>
+                <th class="d-md md-table-cell">Created at:</th>
             </tr>
         </thead>
         <tbody class="text-white">
             {% for booking in bookings %}
             {% if booking.user == username %}
             <tr>
-                <td><a href="{% url 'booking:details' booking.id %}">{{ booking.name }}</a></td>
-                <td>{{ booking.date }}</td>
-                <td>{{ booking.start_time }}</td>
-                <td>{{ booking.table }}</td>
-                <td>{{ booking.party_size }}</td>
-                <td>{{ booking.status }}</td>
-                <td>{{ booking.created_at }}</td>
+                <td class="d-md md-table-cell"><a href="{% url 'booking:details' booking.id %}">{{ booking.name }}</a></td>
+                <td class="d-md md-table-cell">{{ booking.date }}</td>
+                <td class="d-md md-table-cell">{{ booking.start_time }}</td>
+                <td class="d-md md-table-cell">{{ booking.table }}</td>
+                <td class="d-md md-table-cell">{{ booking.party_size }}</td>
+                <td class="d-md md-table-cell">{{ booking.status }}</td>
+                <td class="d-md md-table-cell">{{ booking.created_at }}</td>
             </tr>
             {% endif %}
             {% endfor %}
