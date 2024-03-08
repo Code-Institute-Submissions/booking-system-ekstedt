@@ -2,9 +2,9 @@
 {% load static %}
 
 {% block content %}
-<div class="row justify-content-center">
+<div class="row justify-content-center container-fluid">
     <div class="col-md-8 mt-5 text-left">
-        <h2>Update the booking:</h2>
+        <h3>Update the booking:</h3>
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}

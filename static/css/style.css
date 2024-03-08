@@ -36,7 +36,13 @@ p {
     font-size: 1.1rem
 }
 
-td {
+h4 {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.3rem;
+}
+
+th, td {
+    font-family: 'Lato', sans-serif;
     color: white;
 }
 
@@ -60,6 +66,25 @@ main {
     margin: 0 auto;
 }
 
+#ekstedt_menu_boxes {
+    max-width: 60%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+#ekstedt_history {
+    max-width: 60%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+#ekstedt_contact_boxes {
+    max-width: 60%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
 
 
 /* Footer */
@@ -74,6 +99,33 @@ footer {
     
 }
 
+/* CUSTOM MEDIA QUERIES */
 
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 4rem;
+    }
 
+    h2 {
+        font-size: 3rem;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    #navbar {
+        max-width: 100%;
+        margin: 100px auto;
+    }
+    #hero-image {
+        margin: 100px auto;
+        max-width: 100%;
+    }
+    
+}
 
