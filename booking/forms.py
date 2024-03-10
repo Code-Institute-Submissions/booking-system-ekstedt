@@ -22,6 +22,10 @@ class BookingForm (forms.ModelForm):
     class Media:
         js = ('static/js/booking_form.js')
 
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request', None)
+        super(BookingForm, self).__init__(*args, **kwargs)
+
     def clean_date(self):
         date = self.cleaned_data['date']
         current_date = timezone.now().date()
