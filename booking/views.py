@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.core.exceptions import PermissionDenied
+from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponseNotFound, HttpResponseServerError
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.db import models
@@ -141,3 +142,12 @@ class DeleteBooking(generic.edit.DeleteView):
     def form_valid(self, form):
         messages.success(self.request, BOOKING_SUCCESSFUL_DELETE)
         return super().form_valid(form)
+
+def handler403(request, exception= None):
+    return render(request, "403.html", status=403)
+
+def handler404(request, exception= None):
+    return render(request, "404.html", status=404)
+
+def handler500(request, *args, **kwargs):
+    return render(request, "500.html", status=500)

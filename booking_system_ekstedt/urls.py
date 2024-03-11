@@ -16,10 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import handler403, handler404, handler500
 from booking.views import CreateBooking
+from django.conf import settings
 
 urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
     path('', include("booking.urls")),
+    path('403/', handler403, name="403"),
+    path('404/', handler404, name="404"),
+    path('500/', handler500, name="500"),
 ]
+
+if settings.DEBUG:
+   pass
