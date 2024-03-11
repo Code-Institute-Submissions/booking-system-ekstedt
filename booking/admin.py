@@ -4,7 +4,7 @@ from .models import Table, Booking
 # Register your models here.
 
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ['username', 'name', 'date', 'start_time', 'party_size', 'table', 'status', 'created_at']
+    list_display = ['user', 'name', 'date', 'start_time', 'party_size', 'table', 'status', 'created_at']
     actions = ['confirm_selected_bookings', 'reject_selected_bookings']
 
     def confirm_selected_bookings(self, request, queryset):

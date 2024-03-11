@@ -20,7 +20,7 @@ class Booking(models.Model):
         ('Rejected', 'Rejected'),
     ]
 
-    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length = 255)
     email = models.EmailField(max_length= 150, blank=True, null= True)
     date = models.DateField()

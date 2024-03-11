@@ -75,8 +75,8 @@
         </div>
     </div>
     {% else %}
-    <div class="container">
-        <h2>Welcome {{ user.username }}!</h2>
+    <div class="container-fluid">
+        <h2>Welcome {{ user.user }}!</h2>
         <p>Here is the table for your bookings.</p>
     </div>
     <h3>Your Bookings:</h3>
@@ -94,7 +94,7 @@
         </thead>
         <tbody class="text-white">
             {% for booking in bookings %}
-            {% if booking.user == username %}
+            {% if booking.user == user %}
             <tr>
                 <td class="d-md md-table-cell"><a href="{% url 'booking:details' booking.id %}">{{ booking.name }}</a></td>
                 <td class="d-md md-table-cell">{{ booking.date }}</td>

@@ -49,7 +49,7 @@ class BookingForm (forms.ModelForm):
 
         # Checks if date and start_time are not none
         if date is None or start_time is None or party_size is None:
-            raise ValidationError("Please provide both date and start time, and party size.")
+            raise ValidationError("Please provide date and start time, and party size.")
 
         # Ensures the selected date is not in the past
         current_date = timezone.now().date()
@@ -79,11 +79,10 @@ class BookingForm (forms.ModelForm):
 
         # Throws validation error if no tables are available
         if not available_tables:
-            raise ValidationError("Sorry! There are no tables available for the selected date and guest number.")  
-
-        chosen_table = available_tables[0]
-
-        self.instance.table = chosen_table
+            self.add_error('party_size', "Sorry! There are no tables available for the selected date and guest number.")  
+        else:
+            chosen_table = available_tables[0]
+            self.instance.table = chosen_table
 
         return cleaned_data
 

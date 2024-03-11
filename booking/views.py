@@ -43,7 +43,7 @@ class BookingList(LoginRequiredMixin, generic.ListView):
         if self.request.user.is_staff:
             return Booking.objects.all().order_by('-date')
         else:
-            return Booking.objects.filter(username=self.request.user).order_by('-date')
+            return Booking.objects.filter(user=self.request.user).order_by('-date')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -53,7 +53,7 @@ class BookingList(LoginRequiredMixin, generic.ListView):
         context['user_messages'] = user_messages
         
         confirmed_bookings = Booking.objects.filter(
-            username=self.request.user,
+            user=self.request.user,
             status='Confirmed',
             date__gte=timezone.now().date()
         ).exists()
@@ -81,7 +81,7 @@ class Profile(generic.DetailView):
         context = super().get_context_data(**kwargs)
         
         past_bookings = Booking.objects.filter(
-            username=self.request.user,
+            user = self.request.user,
             date__lt=timezone.now().date()
         ).order_by('-date')
 
@@ -102,7 +102,7 @@ class CreateBooking(generic.edit.CreateView):
         return form
 
     def form_valid(self, form):
-        form.instance.username = self.request.user
+        form.instance.user = self.request.user
 
         if not self.request.user.is_staff:
             today = timezone.now().date()
