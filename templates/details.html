@@ -14,7 +14,7 @@
         <p>Notes: {{ booking.notes }}</p>
         <p>Created At: {{ booking.created_at }}</p>
         <button><a href="{% url 'booking:update' booking.id %}">Update the booking</a></button>
-        <button><a href="{% url 'booking:delete_booking' booking.id %}">Delete the Booking</a></button>
+        <button><a href="{% url 'booking:delete' booking.id %}">Delete the Booking</a></button>
     </div>
 </div>
 {% endblock %}

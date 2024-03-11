@@ -136,11 +136,8 @@ class UpdateBooking(generic.edit.UpdateView):
 class DeleteBooking(generic.edit.DeleteView):
     model = Booking
     success_url = reverse_lazy('booking:bookings')
-    template_name = "delete_booking.html"
+    template_name = "delete.html"
 
     def form_valid(self, form):
-        response = super().form_valid(form)
-
         messages.success(self.request, BOOKING_SUCCESSFUL_DELETE)
-
-        return response
+        return super().form_valid(form)
