@@ -1,8 +1,16 @@
+/**
+ * This script sets up an event listener for the 'DOMContentLoaded' event and initializes
+ * date and start time input elements. It dynamically updates the start time choices based on
+ * the selected date and the day of the week.
+ */
+
+// Add event listener when the DOM content is loaded
 document.addEventListener('DOMContentLoaded', function () {
+    // Get the date and start time input elements
     var dateInput = document.getElementById('id_date');
     var startTimeInput = document.getElementById('id_start_time');
 
-    // Defining the initial choices based on the current date
+    // Initial choices for each day of the week
     var initialChoices = {
         0: [], // Sunday
         1: [], // Monday
@@ -13,7 +21,9 @@ document.addEventListener('DOMContentLoaded', function () {
         6: ["12:00 - 15:00", "15:30 - 18:30", "19:00 - 21:30"], // Saturday
     };
 
-    // Function to update start_time based on the selected date
+    /**
+     * Update the start time choices based on the selected date's day of the week.
+     */
     function updateStartTimeChoices() {
         var selectedDate = new Date(dateInput.value.replace(/-/g, "/"));
         var dayOfWeek = selectedDate.getDay();
@@ -27,9 +37,10 @@ document.addEventListener('DOMContentLoaded', function () {
             startTimeInput.add(option);
         });
     }
-    // Adding event listener to date input
+
+    // Add event listener to date input to trigger start time choices update
     dateInput.addEventListener('change', updateStartTimeChoices);
 
-    // Calling the function initially to set the initial choices
+    // Call the function initially to set the initial choices
     updateStartTimeChoices();
 });

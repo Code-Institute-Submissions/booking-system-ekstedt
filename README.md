@@ -1,42 +1,45 @@
 # Ekstedt Booking Website
 
 ## Overview
-
+This is a project designed and developed to create a complete experience for the clients of Ekstedt Restaurant. The users are given the possibility to create a booking, the admin is capable of approving it and the staff members are meant to manage all the bookings. In order to make a booking, an account registration is needed, while considering that the staff members have special permissions for controlling the data.<br>
+The website was created by getting inspiration from a real life exclusive Restaurant Ekstedt, which is based in Stockholm.<br>
+**Ekstedt Booking Website** was developed using Python3 (Django), HTML, CSS and JavaScript by storing the data in a PostgreSQL database.
+<br><br>
+The fully deployed project can be accessed at [this link](https://booking-system-ekstedt-80e2fb2174de.herokuapp.com//).<br><br>
 
 
 ## Table Of Contents
-
-    * [Overview](#overview)
-    * [UX](#ux)
-        + [Strategy](#strategy)
-        + [Scope](#scope-hr-)
-        + [Structure](#structure-hr-)
-        + [Skeleton](#skeleton-hr-)
-        + [Surface](#surface-hr-)
-            -[Color Scheme & Fonts](#color-scheme-and-fonts)
-            -[Visual Effects](#visual-effects)
-    * [Agile Methodology](#agile-methodology)
-    * [Features](#features)
-        + [Existing Features](#existing-features)
-            - []
-            - []
-            - []
-            - []
-            - []
-        + [Future feature considerations](#future-feature-considerations)
-    * [Responsive Layout And Design](#responsive-layout-and-design)
-    * [Tools Used](#tools-used)
-        + [Python Packages](#python-packages)
-    * [Testing](#testing)
-    * [Deployment](#deployment)
-        + [Deploy On Heroku](#deploy-on-heroku)
-        + [FORK THE REPOSITORY](#fork-the-repository)
-        + [CLONE THE REPOSITORY](#clone-the-repository)
-    * [Credits](#credits)
-        + [Content](#content)
-        + [Media](#media)
-        + [Code](#code)
-    * [Acknowledgements](#acknowledgements)
+* [Overview](#overview)
+* [UX](#ux)
+    + [Strategy](#strategy)
+    + [Scope](#scope-hr-)
+    + [Structure](#structure-hr-)
+    + [Skeleton](#skeleton-hr-)
+    + [Surface](#surface-hr-)
+        -[Color Scheme & Fonts](#color-scheme-and-fonts)
+        -[Visual Effects](#visual-effects)
+* [Agile Methodology](#agile-methodology)
+* [Features](#features)
+    + [Existing Features](#existing-features)
+        - []
+        - []
+        - []
+        - []
+        - []
+    + [Future feature considerations](#future-feature-considerations)
+* [Responsive Layout And Design](#responsive-layout-and-design)
+* [Tools Used](#tools-used)
+    + [Python Packages](#python-packages)
+* [Testing](#testing)
+* [Deployment](#deployment)
+    + [Deploy On Heroku](#deploy-on-heroku)
+    + [FORK THE REPOSITORY](#fork-the-repository)
+    + [CLONE THE REPOSITORY](#clone-the-repository)
+* [Credits](#credits)
+    + [Content](#content)
+    + [Media](#media)
+    + [Code](#code)
+* [Acknowledgements](#acknowledgements)
 
 ## Overview
 
