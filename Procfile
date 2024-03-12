@@ -1,1 +1,1 @@
-web: gunicorn booking-system-ekstedt.wsgi
+web: gunicorn booking_system_ekstedt.wsgi
