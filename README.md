@@ -21,11 +21,13 @@ The fully deployed project can be accessed at [this link](https://booking-system
 * [Agile Methodology](#agile-methodology)
 * [Features](#features)
     + [Existing Features](#existing-features)
-        - []
-        - []
-        - []
-        - []
-        - []
+        - [User Registration and Authentication]
+        - [Booking Interface]
+        - [Feedback and Confirmation]
+        - [Admin Interface]
+        - [Database Integration]
+        - [Basic Front-End Design]
+        - [Testing]
     + [Future feature considerations](#future-feature-considerations)
 * [Responsive Layout And Design](#responsive-layout-and-design)
 * [Tools Used](#tools-used)
@@ -46,7 +48,7 @@ The fully deployed project can be accessed at [this link](https://booking-system
 The Ekstedt Restaurant Booking System is a project designed to facilitate online reservations for users while offering efficient booking management for the site owner. Key features include user registration and authentication, a user-friendly booking interface, immediate confirmation and feedback, an admin interface for booking oversight, and secure database integration. The project prioritizes UX design principles, security measures and thorough documentation. It aims to meet the goals for both the external users, seeking a seamless booking experience, and the site owner, aiming for effective online booking management.
 
 <br><br>
-The deployed project is available at [this link](project link).
+The deployed project is available at [this link](https://booking-system-ekstedt-80e2fb2174de.herokuapp.com/).
 <br><br>
 
 ## UX
@@ -89,8 +91,6 @@ The site was created with respecting The Five Planes of Website Design:<br>
 |**Deployment**                      |  ||
 |                                       |8A| As a developer, I want to document the deployment procedure in the README.|
 |                                       |8B| As a developer, I want to ensure the deployment is well-structured and easy to follow.|
-|**MVP Review**                      |  ||
-|                                       |8A| As a project manager, I want to conduct user acceptance testing to ensure the MVP meets the goals of external users and the site owner.|
 
 **Project goal:**<br>
 The general goal of the project is to create a website for restaurant Ekstedt, which enables an efficient and user-friendly online restaurant booking system that allows users to easily book meals for themselves and others, specifying the desired time and date. Simultaneuosly, the system aims to empower the site owner by providing a robust admin interface for efficient management of online bookings at their eatery.
@@ -138,6 +138,7 @@ The website's structure is divided into nine different pages with content which 
 * **Login:** A page where users need to log in to access and manage their accounts.
 * **Manage bookings:** This page is only accessible for staff members and allows them to manage reservations, view bookings, and update the status of tables.
 * **Register:** This page allows new users to register and create an account to the website.
+* **Profile:** This page allows the users see their past bookings and details.
 
 #### Flowchart
 
@@ -149,11 +150,13 @@ The flowchart for the project was created with using <b>LucidChart</b>.<br><br>
 **Wireframes**<br>
 The wireframes for mobile and desktop were created by [Balsamiq](https://balsamiq.com/) tool and can be viewed <details>
 <summary>Here:</summary>
-<img src="..."><br>
+<img src="static/images/ekstedt_wireframes.png"><br>
 </details><br>
 
 **Database**<br>
-In the project ElephantSQL was used for PostgreSQL relational database in data storing.<br>
+In the project ElephantSQL was used for PostgreSQL relational database in data storing.
+Two diagrams were created to represent the relationships between the tables. The first diagram was created before the website was developed, and it was used to identify the most relevant and useful attributes and tables. The final diagram was created after the website was developed, and it reflects the changes that were made to the attributes and tables.
+<br>
 <details>
 <summary>Initial Model</summary>
 <img src="static/images/initial_diagram.png"><br>
@@ -161,8 +164,14 @@ In the project ElephantSQL was used for PostgreSQL relational database in data s
 
 <details>
 <summary>Final Model</summary>
-<img src="..."><br>
-</details>
+<img src="static/images/latest_diagram.png"><br>
+</details><br>
 
-Notes: I have decided that the previous bookings will be shown in user profile page instead of bookings page.
-        Since I was not able to contact the restaurant management, then i had to improvise some aspects of the projects. Those were the table placements and seats including the usual booking times. This could be adjusted in future development.
+### Surface<hr>
+#### Color Scheme and Fonts
+* The fonts that were used in this project were taken from [Google Fonts](https://fonts.google.com/):<br>
+* h1 - h3 elements: *Playfair Display*
+* h4 , p, td, th elements: *Lato*
+* font color: #white
+* Webpage background image was found [Freepik](https://www.freepik.com/):
+<img src="static/images/charcoal_gray_crop.png">
