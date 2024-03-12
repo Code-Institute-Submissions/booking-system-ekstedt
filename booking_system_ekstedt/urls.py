@@ -24,10 +24,4 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
     path('', include("booking.urls")),
-    path('403/', handler403, name="403"),
-    path('404/', handler404, name="404"),
-    path('500/', handler500, name="500"),
 ]
-
-if settings.DEBUG:
-   pass

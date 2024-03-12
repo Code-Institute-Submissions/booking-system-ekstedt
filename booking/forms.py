@@ -6,6 +6,12 @@ from .models import Booking, Table
 from datetime import datetime
 
 class BookingForm (forms.ModelForm):
+    """
+    A Django ModelForm for creating and updating Booking objects.
+
+    Attributes:
+        Media: A class containing additional metadata, such as JavaScript files.
+    """
     class Meta:
         model = Booking
         fields = ['name', 'email', 'date', 'start_time', 'party_size', 'notes']
@@ -23,10 +29,29 @@ class BookingForm (forms.ModelForm):
         js = ('static/js/booking_form.js')
 
     def __init__(self, *args, **kwargs):
+        """
+        Initialize the BookingForm instance.
+
+        Args:
+            *args: Variable length argument list.
+            **kwargs: Arbitrary keyword arguments.
+
+        Attributes:
+            request: The request associated with the form.
+        """
         self.request = kwargs.pop('request', None)
         super(BookingForm, self).__init__(*args, **kwargs)
 
     def clean_date(self):
+        """
+        Clean and validate the 'date' field.
+
+        Returns:
+            datetime.date: The cleaned and validated date.
+
+        Raises:
+            ValidationError: If the date is not within valid restaurant dates or not made in advance.
+        """
         date = self.cleaned_data['date']
         current_date = timezone.now().date()
         user = self.request.user
@@ -42,6 +67,15 @@ class BookingForm (forms.ModelForm):
         return date
 
     def clean(self):
+        """
+        Clean and validate the entire form.
+
+        Returns:
+            dict: The cleaned and validated form data.
+
+        Raises:
+            ValidationError: If there are issues with date, start_time, or party_size.
+        """
         cleaned_data = super().clean()
         date = cleaned_data.get('date')
         start_time = cleaned_data.get('start_time')
@@ -87,6 +121,15 @@ class BookingForm (forms.ModelForm):
         return cleaned_data
 
     def get_time_window(self, date):
+        """
+        Get the time window based on the day of the week.
+
+        Args:
+            date (datetime.date): The date for which the time window is calculated.
+
+        Returns:
+            timezone.timedelta: The calculated time window.
+        """
         # Adjusts the time window based on the day of the week
         if date.weekday() == 5: # Saturday
             return timezone.timedelta(minutes=30)
