@@ -137,9 +137,9 @@ USE_TZ = True
 
 # Cloudinary Storage Configuration
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'CLOUDINARY_CLOUD_NAME',
-    'API_SECRET': 'CLOUDINARY_API_SECRET',
-    'API_KEY': 'CLOUDINARY_API_KEY',
+    CLOUD_NAME: os.environ.get("SECRET_KEY"),
+    API_SECRET: CLOUDINARY_API_SECRET,
+    API_KEY: CLOUDINARY_API_KEY,
 }
 
 # Static files (CSS, JavaScript, Images)
