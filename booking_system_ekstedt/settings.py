@@ -135,6 +135,12 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Cloudinary Storage Configuration
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'CLOUDINARY_CLOUD_NAME',
+    'API_SECRET': 'CLOUDINARY_API_SECRET',
+    'API_KEY': 'CLOUDINARY_API_KEY',
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
