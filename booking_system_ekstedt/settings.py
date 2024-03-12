@@ -137,9 +137,9 @@ USE_TZ = True
 
 # Cloudinary Storage Configuration
 
-CLOUD_NAME: os.environ.get("CLOUDINARY_CLOUD_NAME")
-API_SECRET: os.environ.get("CLOUDINARY_API_SECRET")
-API_KEY: os.environ.get("CLOUDINARY_API_KEY")
+CLOUD_NAME = os.environ.get("CLOUDINARY_CLOUD_NAME")
+API_SECRET = os.environ.get("CLOUDINARY_API_SECRET")
+API_KEY = os.environ.get("CLOUDINARY_API_KEY")
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
