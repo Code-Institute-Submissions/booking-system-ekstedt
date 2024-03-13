@@ -18,6 +18,9 @@ class Table(models.Model):
     number_of_seats = models.IntegerField(validators=[MinValueValidator (2), MaxValueValidator(12)], default=2)
 
     def __str__(self):
+        """
+        Returns a string representation of the table.
+        """
         return f"Table {self.table_number}"
     
 class Booking(models.Model):
@@ -58,6 +61,9 @@ class Booking(models.Model):
     rejection_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
+        """
+        Returns a string representation of the reservation.
+        """
         return self.name
 
     def confirm_booking(self):
@@ -78,13 +84,25 @@ class Booking(models.Model):
 
     def update_status(self, status, date):
         """
-        Method to update the reservation status and associated date. 
+        Method to update the reservation status and associated date.
+
+        - status (str): The new status for the reservation.
+        - date (datetime): The date associated with the new status. 
         """
         self.status = status
         setattr(self, f"{status.lower()}_date", date)
         self.save()
 
 class BookingHistory(models.Model):
+    """
+    Model representing the history of actions performed on a reservation booking.
+
+    - ACTION_CHOICES: Choices for the types of actions (confirmed, rejected).
+    - booking: The reservation booking associated with the history entry (ForeignKey to Booking model.)
+    - action: The type of action performed (confirmed, rejected).
+    - timestamp: The timestamp when the action was recorded (default is the current time).
+    - user: The user who performed the action (ForeignKey to Django User model, can be null and blank).
+    """
     ACTION_CHOICES = [
         ('confirmed', 'Confirmed'),
         ('rejected', 'Rejected'),
@@ -96,4 +114,7 @@ class BookingHistory(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
+        """
+        Returns a string representation of the booking history entry.
+        """
         return f"{self.action} on {self.booking} at {self.timestamp} by {self.user}"
