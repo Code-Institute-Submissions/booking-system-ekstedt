@@ -163,6 +163,8 @@ Two diagrams were created to represent the relationships between the tables. The
 </details>
 
 <details>
+<p>During the development, it was decided that the admin interface needs a booking confirmation history interface, for better data
+analitics. Therefore the diagram changed quite considerably.</p>
 <summary>Final Model</summary>
 <img src="static/images/latest_diagram.png"><br>
 </details><br>

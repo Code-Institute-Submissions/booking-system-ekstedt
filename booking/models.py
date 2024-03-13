@@ -76,6 +76,14 @@ class Booking(models.Model):
         self.rejection_date = timezone.now()
         self.save()
 
+    def update_status(self, status, date):
+        """
+        Method to update the reservation status and associated date. 
+        """
+        self.status = status
+        setattr(self, f"{status.lower()}_date", date)
+        self.save()
+
 class BookingHistory(models.Model):
     ACTION_CHOICES = [
         ('confirmed', 'Confirmed'),
