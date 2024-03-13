@@ -1,6 +1,6 @@
 from django.contrib import admin, messages
 from django.utils.html import format_html
-from .models import Table, Booking
+from .models import Table, Booking, BookingHistory
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 
@@ -60,6 +60,9 @@ class BookingAdmin(admin.ModelAdmin):
         booking= self.get_object(request, object_id)
         if booking and (booking.status == 'Pending' or booking.status == 'Rejected'):
             booking.confirm_booking()
+
+            BookingHistory.objects.create(booking=booking, action='confirmed', user=request.user)
+
             self.message_user(request, f'Booking for {booking.user} confirmed successfully.', messages.SUCCESS)
         else:
             self.message_user(request, f'Selected booking cannot be confirmed.', messages.ERROR)
@@ -68,7 +71,12 @@ class BookingAdmin(admin.ModelAdmin):
 
     def reject_booking(self, request, object_id):
         queryset = self.get_queryset(request)
-        queryset.filter(pk=object_id).update(status='Rejected')
+        booking = queryset.get(pk=object_id)
+        booking.status = 'Rejected'
+        booking.save()
+
+        BookingHistory.objects.create(booking=booking, action='rejected', user=request.user)
+
         self.message_user(request, 'Selected booking rejected succesfully.', messages.SUCCESS)
         
         return HttpResponseRedirect(reverse('admin:booking_booking_changelist'))
@@ -89,5 +97,15 @@ class BookingAdmin(admin.ModelAdmin):
 
     reject_selected_bookings.short_description = "Reject the selected bookings"
 
+class BookingHistoryAdmin(admin.ModelAdmin):
+    list_display = ['booking', 'action', 'timestamp', 'user']
+    search_fields = ['booking__user__username', 'action']
+    list_filter = ['action', 'timestamp']
+    readonly_fields = ['booking', 'action', 'timestamp', 'user']
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
 admin.site.register(Table)
 admin.site.register(Booking, BookingAdmin)
+admin.site.register(BookingHistory, BookingHistoryAdmin)

@@ -175,3 +175,7 @@ Two diagrams were created to represent the relationships between the tables. The
 * font color: #white
 * Webpage background image was found [Freepik](https://www.freepik.com/):
 <img src="static/images/charcoal_gray_crop.png">
+
+## Agile Methodology
+This project was developed using the Agile Methodology.<br>
+Epics and user stories were registered using [GitHub](https://github.com/). As User Stories were accomplished they were moved from **No Status** to **ToDo**, **In Progress** and **Done** lists.

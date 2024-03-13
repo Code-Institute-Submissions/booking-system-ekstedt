@@ -75,3 +75,17 @@ class Booking(models.Model):
         self.status = 'Rejected'
         self.rejection_date = timezone.now()
         self.save()
+
+class BookingHistory(models.Model):
+    ACTION_CHOICES = [
+        ('confirmed', 'Confirmed'),
+        ('rejected', 'Rejected'),
+    ]
+
+    booking = models.ForeignKey(Booking, on_delete=models.CASCADE, related_name='history')
+    action = models.CharField(max_length=20, choices=ACTION_CHOICES)
+    timestamp = models.DateTimeField(default = timezone.now)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.action} on {self.booking} at {self.timestamp} by {self.user}"
