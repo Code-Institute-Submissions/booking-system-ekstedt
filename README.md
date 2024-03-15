@@ -180,4 +180,164 @@ analitics. Therefore the diagram changed quite considerably.</p>
 
 ## Agile Methodology
 This project was developed using the Agile Methodology.<br>
-Epics and user stories were registered using [GitHub](https://github.com/). As User Stories were accomplished they were moved from **No Status** to **ToDo**, **In Progress** and **Done** lists.
+Epics and user stories were registered using [GitHub](https://github.com/). As User Stories were accomplished they were moved to **ToDo**, **In Progress**, **Done** and **Future Development** lists.
+<details>
+<summary>Sprint Details</summary>
+
+* **KANBAN BOARD**<br><br>
+    <img src="static/images/...." width="60%"><br><br>
+
+* **MVP Epics and Stories:**<br>
+
+* **EPIC 1: Project Setup**<br>
+    -#12 Define Clear Project Goals<br>
+    -#13 Set Up Git Version Control for Project Management and Collaboration<br>
+* **EPIC 2: User Authentication**<br>
+    -#15 User Registration for Access to Personalized Features<br>
+    -#16 Secure User Login Functionality<br>
+* **EPIC 3: Front-End Development**<br>
+    -#18 Visually Appealing and User-Friendly Booking Interface<br>
+    -#19 User-Centric Design Following UX Principles<br>
+* **EPIC 4: Booking System**<br>
+    -#21 User-Friendly Booking Form with Date, Time, and Guest Information<br>
+    -#22 Real-Time Feedback on Booking Success<br>
+    -#23 Confirmation Messages<br>
+* **EPIC 5: Admin Interface**<br>
+    -#25 Implementation of Basic Admin Dashboard<br>
+    -#26 Booking Confirmation and Rejection Functionality in Admin dashboard<br>
+* **EPIC 6: Database Integration**<br>
+    -#28 Database Setup for Booking Details<br>
+    -#29 Basic CRUD Functionality for Booking Management<br>
+* **EPIC 7: Testing**<br>
+    -#31 Automated Testing for Functionality and Responsiveness<br>
+    -#32 Test Results Documentation and Bug Tracking<br>
+* **EPIC 8: Documentation**<br>
+    -#34 Project README Documentation Creation<br>
+    -#35 Data Schema and Deployment Documentation<br>
+* **EPIC 10: Deployment**<br>
+    -#39 Documentation of Deployment Procedure in README<br>
+
+* **Plausible Future MVP Updates:**<br>
+
+* **EPIC 9: Model Code Efficiency**<br>
+    -#37 Implementation of Efficient Model Code for Booking<br>
+
+* **EPIC 10: Deployment**<br>
+    -#40 Optimization of Deployment Structure for Improved Accessibility<br>
+
+* **EPIC 11 MVP Review**<br>
+    -#42 User Acceptance Testing for MVP Alignment<br>
+
+* **EPIC 12 Iterative Development**<br>
+    -#44 Feedback Gathering for Continous Improvement<br>
+    -#45 Iterative Feature Development and Refinement<br>
+    -#46 Continous Project Iteration for Enhancements<br>
+</details><br><br>
+
+## Features
+
+### Existing features and sub-pages<hr>
+
+#### Customer bookings management
+
+Every client that is authenticated can access the "Booking" page where they have an overview over their bookings and from there they can select their booking for it's "Details".
+* From "Booking" view they can:
+    * View their booking in a table;<br>
+    * Create a new booking;<br>
+    * Select the booking which leads to the booking details page;<br>
+<br><br>
+
+<img src=""><br><br>
+
+* From "Details" view they can:
+    * View the booking details;<br>
+    * Select to update their booking;<br>
+    * Select to delete their booking;<br>
+
+<img src=""><br><br>
+
+#### Staff bookings management
+
+Staff users that are authenticated can acces the "Booking" page where they have an overview over all of the bookings that will occur today and in the future in table format.
+* From "Booking" view they can:
+    * View the bookings for today in the first table;<br>
+    * View the bookings for future in the second table;<br>
+    * Select a booking which leads to the particular booking details page, where it has similar functionalities that were previously mentioned as for the regular user;<br>
+    * Create a new booking;<br>
+<br><br>
+
+<img src=""><br><br>
+
+#### Create Bookings
+
+Every user that is authenticated can access the *Booking* page for making a booking. This feature provides a form which the user needs to fill out with booking details. There are different rules for staff and regular users when filling out the form. Information on the form page is provided about the maximum guest number and how long is the minimum length of a booking.
+* The form is for selecting the date and time choice of the booking.
+    The inputs are validated according to these rules:
+    * The date value should be 60 days after the day that the booking is performed, this applies only to a regular user and not the staff. This is that staff can accomodate special occasions when the need arises since they have the overview how the restaurant is running and can make adjustments for the capacity and table placements in the restaurant;<br>
+    * Entering the name, number of guests, date and time choice is required;<br>
+    * Maximum number of guests for one booking is 6 people;<br>
+    * The restaurant does not provide any times for Sunday and Monday;<br>
+    * The user cannot make a booking in the past;<br> 
+    * The users can choose a time from a list:
+        * Tuesday to Friday: "17:30" and "21:15"
+        * Saturday: "12:00", "15:30" and "19:00"<br><br>
+    * The users are also able to add their email and notes about the booking, which are optional;<br><br>
+
+<img src=""><br><br>
+     
+* In case of a successfull booking the user will be redirected to the bookings list page, where also a message will appear.
+
+#### Menu
+
+The "Menu" page provides the users information about the restaurants menu and price. Where they can also click onto a link, which leads them to the wine list on an external site.
+
+<img src=""><br><br>
+
+#### History
+
+The "History" page includes a brief history about the restaurant and the owner, explaining where it all began.
+
+<img src=""><br><br>
+
+#### Contact
+
+The "Contact" page includes information about how to contact the restaurant and where it is located.
+
+<img src=""><br><br>
+
+#### Profile
+
+The "Profile" page includes information for the user about their past bookings and their user details.
+
+<img src=""><br><br>
+
+#### Admin Interface
+
+The admin interface includes capabilities for the admin(superuser) to add and remove tables, users and bookings. While also provides the capability for the admin and staff members to confirm and approve bookings. There is also a BookingHistory functionality which provides details about confirmation/rejection of the bookings.
+
+#### Potential Future Features
+
+* Email confirmation for users with booking details after the booking has been confirmed by the admin or staff member.
+* Password reset feature which can be included hand in hand with email confirmation.
+* Possibility for the users to enhance their profile with more information.
+* On-site waiting list feature for making it easier to keep track on the upcoming bookings and being on track on customer satisfaction. 
+
+## Responsive Layout and Design
+
+## Tools Used
+
+[GitHub](https://github.com/) - used for hosting the source code for the program.<br>
+[Heroku](https://dashboard.heroku.com/) - used for deploying the project.<br>
+[ElephantSQL](https://www.elephantsql.com/) - for PostgreSQL database.<br>
+[Balsamiq](https://balsamiq.com/wireframes/) - for creating the wireframes.<br>
+[LucidChart](https://www.lucidchart.com/) - used for creating the FlowChart and Database relational schema.<br>
+[Grammarly](https://app.grammarly.com/) - for correcting text content.<br>
+[Bootstrap5](https://getbootstrap.com/) - for adding predefined styled elements and creating responsiveness.<br>
+[Google Fonts](https://fonts.google.com/) - for typography.<br>
+[Code Institute](https://pep8ci.herokuapp.com/) - used for validating the Python code.<br>
+[HTML - W3C HTML Validator](https://validator.w3.org/#validate_by_uri+with_options) - used for validating the HTML.<br>
+[CSS - JigSaw CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_uri) - used for validating the CSS.<br>
+[Chrome Dev Tools](https://developer.chrome.com/docs/devtools) - for debugging the project.<br>
+[W.A.V.E](https://wave.webaim.org/) - for testing accessibility.<br>
+[Cloudinary](https://cloudinary.com/) - for storing static data.<br>
+[Chrome Lighthouse Extension] - for testing performance.<br>
