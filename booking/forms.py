@@ -5,12 +5,14 @@ from django.utils import timezone
 from .models import Booking, Table
 from datetime import datetime
 
+
 class BookingForm (forms.ModelForm):
     """
     A Django ModelForm for creating and updating Booking objects.
 
     Attributes:
-        Media: A class containing additional metadata, such as JavaScript files.
+        Media: A class containing additional metadata,
+        such as JavaScript files.
     """
     class Meta:
         model = Booking
@@ -50,7 +52,8 @@ class BookingForm (forms.ModelForm):
             datetime.date: The cleaned and validated date.
 
         Raises:
-            ValidationError: If the date is not within valid restaurant dates or not made in advance.
+            ValidationError: If the date is not within
+            valid restaurant dates or not made in advance.
         """
         date = self.cleaned_data['date']
         current_date = timezone.now().date()
@@ -58,11 +61,14 @@ class BookingForm (forms.ModelForm):
 
         if not user.is_staff:
             if date <= current_date + timezone.timedelta(days=60):
-                raise ValidationError('Bookings must be made at least 60 days in advance.')
+                raise ValidationError(
+                    'Bookings must be made at least 60 days in advance.'
+                    )
 
-        # Check if the selected date is within valid restaurant dates (Tuesday to Saturday).
         if date.weekday() not in [1, 2, 3, 4, 5]:
-            raise ValidationError('The restaurant is open from Tuesday to Saturday. Please select a valid date.')
+            raise ValidationError(
+                'The restaurant is open from Tuesday \
+                 to Saturday. Please select a valid date.')
 
         return date
 
@@ -74,46 +80,45 @@ class BookingForm (forms.ModelForm):
             dict: The cleaned and validated form data.
 
         Raises:
-            ValidationError: If there are issues with date, start_time, or party_size.
+            ValidationError: If there are issues with
+            date, start_time, or party_size.
         """
         cleaned_data = super().clean()
         date = cleaned_data.get('date')
         start_time = cleaned_data.get('start_time')
         party_size = cleaned_data.get('party_size')
 
-        # Checks if date and start_time are not none
         if date is None or start_time is None or party_size is None:
-            raise ValidationError("Please provide date and start time, and party size.")
+            raise ValidationError
+            ("Please provide date and start time, and party size.")
 
-        # Ensures the selected date is not in the past
         current_date = timezone.now().date()
         if date < current_date:
-            raise ValidationError("Booking date cannot be in the past. Choose a valid date.")
+            raise ValidationError
+            ("Booking date cannot be in the past. Choose a valid date.")
 
-        # Filters tables with capacity greater or equal to the party size
         tables_with_capacity = Table.objects.filter(
             number_of_seats__gte=party_size
         )
 
-        # Converts start_time to datetime object for comparison
         start_datetime = datetime.combine(date, start_time)
 
-        # Gets bookings on the specified date excluding the current booking that is being updated
         bookings_on_requested_datetime = Booking.objects.filter(
             date=date,
             start_time__lte=start_datetime,
             start_time__gte=start_datetime - self.get_time_window(date)
         ).exclude(id=self.instance.id)
 
-        # Gets booked tables for the specified datetime
-        booked_tables = [booking.table.id for booking in bookings_on_requested_datetime]
+        booked_tables = [
+            booking.table.id for booking in bookings_on_requested_datetime]
 
-        # Filters available tables by excluding booked tables
         available_tables = tables_with_capacity.exclude(id__in=booked_tables)
 
-        # Throws validation error if no tables are available
         if not available_tables:
-            self.add_error('party_size', "Sorry! There are no tables available for the selected date and guest number.")  
+            self.add_error(
+                'party_size',
+                "Sorry! There are no tables \
+            available for the selected date and guest number.")
         else:
             chosen_table = available_tables[0]
             self.instance.table = chosen_table
@@ -125,13 +130,14 @@ class BookingForm (forms.ModelForm):
         Get the time window based on the day of the week.
 
         Args:
-            date (datetime.date): The date for which the time window is calculated.
+            date (datetime.date): The date
+            for which the time window is calculated.
 
         Returns:
             timezone.timedelta: The calculated time window.
         """
-        # Adjusts the time window based on the day of the week
-        if date.weekday() == 5: # Saturday
+
+        if date.weekday() == 5:
             return timezone.timedelta(minutes=30)
         elif date.weekday() in [1, 2, 3, 4]:
             return timezone.timedelta(minutes=45)
