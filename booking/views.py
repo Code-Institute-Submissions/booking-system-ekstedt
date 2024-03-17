@@ -18,6 +18,7 @@ from .messages import (
     BOOKING_SUCCESSFUL_DELETE,
 )
 from django.contrib import messages
+from django.utils import formats
 
 # Create your views here.
 class HomePage(generic.TemplateView):
@@ -78,10 +79,15 @@ class BookingList(LoginRequiredMixin, generic.ListView):
             user=self.request.user,
             status='Confirmed',
             date__gte=timezone.now().date()
-        ).exists()
+        )
 
-        if confirmed_bookings:
-            messages.success(self.request, 'Your booking has been confirmed!')
+        for booking in confirmed_bookings:
+            formatted_date = formats.date_format(booking.date, format='SHORT_DATE_FORMAT')
+            formatted_time = formats.time_format(booking.start_time, format='TIME_FORMAT')
+
+            confirmation_message = f"Your booking for {formatted_date} at {formatted_time} has been confirmed!"
+
+            messages.success(self.request, confirmation_message)
 
         return context
 
