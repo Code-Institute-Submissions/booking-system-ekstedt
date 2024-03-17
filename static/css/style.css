@@ -25,6 +25,10 @@ body, .navbar {
     height: 3rem;
 }
 
+.navbar-toggler {
+    filter: invert(1);
+}
+
 /* Typography */
 h1 {
     font-family: 'Playfair Display', sans-serif;
@@ -69,33 +73,12 @@ main {
     margin: 200px auto;
 }
 
-#ekstedt_main_boxes {
+#ekstedt_main_boxes, #ekstedt_menu_boxes, #ekstedt_history, #ekstedt_contact_boxes {
     max-width: 60%;
     height: auto;
     display: block;
     margin: 0 auto;
 }
-
-#ekstedt_menu_boxes {
-    max-width: 60%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-#ekstedt_history {
-    max-width: 60%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-#ekstedt_contact_boxes {
-    max-width: 60%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-
 
 /* Footer */
 
@@ -113,7 +96,7 @@ footer {
 
 @media screen and (max-width: 768px) {
     h1 {
-        font-size: 3rem;
+        font-size: 2,5rem;
     }
 
     h2 {
@@ -121,7 +104,11 @@ footer {
     }
 
     h3 {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    h4 {
+        font-size: 1.1rem;
     }
 
     p {
@@ -136,6 +123,9 @@ footer {
         margin: 100px auto;
         max-width: 100%;
     }
-    
+
+    #ekstedt_main_boxes, #ekstedt_menu_boxes, #ekstedt_history, #ekstedt_contact_boxes {
+        max-width: 90%;
+    }
 }
 
