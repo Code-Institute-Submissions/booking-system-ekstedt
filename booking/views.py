@@ -89,6 +89,20 @@ class BookingList(LoginRequiredMixin, generic.ListView):
 
             messages.success(self.request, confirmation_message)
 
+        rejected_bookings = Booking.objects.filter(
+            user = self.request.user,
+            status='Rejected',
+            date__gte=timezone.now().date()
+        )
+
+        for booking in rejected_bookings:
+            formatted_date = formats.date_format(booking.date, format='SHORT_DATE_FORMAT')
+            formatted_time = formats.time_format(booking.start_time, format='TIME_FORMAT')
+
+            rejection_message = f"Your booking for {formatted_date} at {formatted_time} has been rejected by the admin."
+
+            messages.warning(self.request, rejection_message)
+
         return context
 
 class BookingDetail(generic.DetailView):
