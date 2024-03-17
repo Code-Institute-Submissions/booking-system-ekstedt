@@ -45,8 +45,9 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'booking:home' %}"><img src="{% static 'images/ekstedt_tree.png' %}"
                     alt="Ekstedt tree logo" class="image-fluid"></a>
-            <button class="navbar-toggler white-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler white-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
@@ -103,7 +104,8 @@
         <div class="container-fluid">
             {% if messages %}
             {% for message in messages %}
-            <div class="alert alert-success" role="alert">
+            <div class="alert {% if message.tags == 'success' %} alert-success{% elif message.tags == 'warning' %}alert-danger{% endif %}"
+                role="alert">
                 {{ message }}
             </div>
             {% endfor %}
