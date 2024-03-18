@@ -62,8 +62,7 @@ class BookingForm (forms.ModelForm):
         if not user.is_staff:
             if date <= current_date + timezone.timedelta(days=60):
                 raise ValidationError(
-                    'Bookings must be made at least 60 days in advance.'
-                    )
+                    'Bookings must be made at least 60 days in advance.')
 
         if date.weekday() not in [1, 2, 3, 4, 5]:
             raise ValidationError(
@@ -88,14 +87,14 @@ class BookingForm (forms.ModelForm):
         start_time = cleaned_data.get('start_time')
         party_size = cleaned_data.get('party_size')
 
-        if date is None or start_time is None or party_size is None:
-            raise ValidationError
-            ("Please provide date and start time, and party size.")
+        if not all ([date, start_time, party_size]):
+            raise ValidationError(
+                "Please provide date and start time, and party size.")
 
         current_date = timezone.now().date()
         if date < current_date:
-            raise ValidationError
-            ("Booking date cannot be in the past. Choose a valid date.")
+            raise ValidationError(
+                "Booking date cannot be in the past. Choose a valid date.")
 
         tables_with_capacity = Table.objects.filter(
             number_of_seats__gte=party_size

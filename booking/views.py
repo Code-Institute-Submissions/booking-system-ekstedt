@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.exceptions import PermissionDenied
-from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponseNotFound, HttpResponseServerError
+from django.http import HttpResponse, \
+    HttpResponseRedirect, Http404, \
+    HttpResponseNotFound, HttpResponseServerError
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.db import models
@@ -20,13 +22,14 @@ from .messages import (
 from django.contrib import messages
 from django.utils import formats
 
-# Create your views here.
+
 class HomePage(generic.TemplateView):
     """
     Display the home page.
     """
     template_name = "index.html"
     context_object_name = "homepage"
+
 
 class MenuPage(generic.TemplateView):
     """
@@ -35,12 +38,14 @@ class MenuPage(generic.TemplateView):
     template_name = "menu.html"
     context_object_name = "menu"
 
+
 class HistoryPage(generic.TemplateView):
     """
     Display the history page.
     """
     template_name = "history.html"
     context_object_name = "history"
+
 
 class ContactPage(generic.TemplateView):
     """
@@ -49,12 +54,13 @@ class ContactPage(generic.TemplateView):
     template_name = "contact.html"
     context_object_name = "contact"
 
+
 class BookingList(LoginRequiredMixin, generic.ListView):
     """
     Display a list of bookings for staff or users.
     """
     template_name = "bookings.html"
-    context_object_name= "bookings"
+    context_object_name = "bookings"
 
     def get_queryset(self):
         """
@@ -63,7 +69,8 @@ class BookingList(LoginRequiredMixin, generic.ListView):
         if self.request.user.is_staff:
             return Booking.objects.all().order_by('-date')
         else:
-            return Booking.objects.filter(user=self.request.user).order_by('-date')
+            return Booking.objects.filter(
+                user=self.request.user).order_by('-date')
 
     def get_context_data(self, **kwargs):
         """
@@ -74,7 +81,6 @@ class BookingList(LoginRequiredMixin, generic.ListView):
 
         user_messages = messages.get_messages(self.request)
         context['user_messages'] = user_messages
-        
         confirmed_bookings = Booking.objects.filter(
             user=self.request.user,
             status='Confirmed',
@@ -82,28 +88,36 @@ class BookingList(LoginRequiredMixin, generic.ListView):
         )
 
         for booking in confirmed_bookings:
-            formatted_date = formats.date_format(booking.date, format='SHORT_DATE_FORMAT')
-            formatted_time = formats.time_format(booking.start_time, format='TIME_FORMAT')
+            formatted_date = formats.date_format(
+                booking.date, format='SHORT_DATE_FORMAT')
+            formatted_time = formats.time_format(
+                booking.start_time, format='TIME_FORMAT')
 
-            confirmation_message = f"Your booking for {formatted_date} at {formatted_time} has been confirmed!"
+            confirmation_message = f"Your booking for \
+            {formatted_date} at {formatted_time} has been confirmed!"
 
             messages.success(self.request, confirmation_message)
 
         rejected_bookings = Booking.objects.filter(
-            user = self.request.user,
+            user=self.request.user,
             status='Rejected',
             date__gte=timezone.now().date()
         )
 
         for booking in rejected_bookings:
-            formatted_date = formats.date_format(booking.date, format='SHORT_DATE_FORMAT')
-            formatted_time = formats.time_format(booking.start_time, format='TIME_FORMAT')
+            formatted_date = formats.date_format(
+                booking.date, format='SHORT_DATE_FORMAT')
+            formatted_time = formats.time_format(
+                booking.start_time, format='TIME_FORMAT')
 
-            rejection_message = f"Your booking for {formatted_date} at {formatted_time} has been rejected by the admin."
+            rejection_message = f"Your booking for \
+                {formatted_date} at \
+                    {formatted_time} has been rejected by the admin."
 
             messages.warning(self.request, rejection_message)
 
         return context
+
 
 class BookingDetail(generic.DetailView):
     """
@@ -120,7 +134,7 @@ class Profile(generic.DetailView):
     """
     model = User
     template_name = "profile.html"
-    context_object_name= "profile"
+    context_object_name = "profile"
 
     def get_object(self, queryset=None):
         """
@@ -133,9 +147,8 @@ class Profile(generic.DetailView):
         Add past bookings to the context.
         """
         context = super().get_context_data(**kwargs)
-        
         past_bookings = Booking.objects.filter(
-            user = self.request.user,
+            user=self.request.user,
             date__lt=timezone.now().date()
         ).order_by('-date')
 
@@ -170,13 +183,14 @@ class CreateBooking(generic.edit.CreateView):
         if not self.request.user.is_staff:
             today = timezone.now().date()
             if form.instance.date <= today:
-                form.add_error('date', 'Tables can only be booked for future dates.')
-                
+                form.add_error(
+                    'date', 'Tables can only be booked for future dates.')
         response = super().form_valid(form)
 
         messages.success(self.request, BOOKING_SUCCESSFUL_CREATE)
 
         return response
+
 
 class UpdateBooking(generic.edit.UpdateView):
     """
@@ -204,6 +218,7 @@ class UpdateBooking(generic.edit.UpdateView):
         messages.success(self.request, BOOKING_SUCCESSFUL_UPDATE)
 
         return response
+
 
 class DeleteBooking(generic.edit.DeleteView):
     """
