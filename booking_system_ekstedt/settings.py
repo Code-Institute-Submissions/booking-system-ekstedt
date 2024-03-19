@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 from pathlib import Path
 import os
+import cloudinary
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
@@ -23,12 +24,12 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get("APP_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['8000-flyhighhher-bookingsyst-6z0zzwg7l35.ws-eu110.gitpod.io', '.herokuapp.com']
+ALLOWED_HOSTS = ['booking-system-ekstedt-80e2fb2174de.herokuapp.com/']
 
 
 # Application definition
@@ -101,7 +102,6 @@ DATABASES = {
 }
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://8000-flyhighhher-bookingsyst-6z0zzwg7l35.ws-eu110.gitpod.io",
     "https://*.herokuapp.com"
 ]
 
@@ -136,10 +136,12 @@ USE_I18N = True
 USE_TZ = True
 
 # Cloudinary Storage Configuration
-
-CLOUD_NAME = os.environ.get("CLOUDINARY_CLOUD_NAME")
-API_SECRET = os.environ.get("CLOUDINARY_API_SECRET")
-API_KEY = os.environ.get("CLOUDINARY_API_KEY")
+          
+cloudinary.config( 
+  CLOUD_NAME = os.environ.get("CLOUDINARY_CLOUD_NAME"), 
+  API_KEY = os.environ.get("CLOUDINARY_API_KEY"), 
+  API_SECRET = os.environ.get("CLOUDINARY_API_SECRET") 
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
