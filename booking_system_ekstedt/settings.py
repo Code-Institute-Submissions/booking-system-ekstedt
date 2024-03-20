@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get("APP_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['booking-system-ekstedt-80e2fb2174de.herokuapp.com']
+ALLOWED_HOSTS = ['booking-system-ekstedt-80e2fb2174de.herokuapp.com','8000-flyhighhher-bookingsyst-6z0zzwg7l35.ws-eu110.gitpod.io']
 
 
 # Application definition
@@ -102,7 +102,7 @@ DATABASES = {
 }
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.herokuapp.com"
+    "https://*.herokuapp.com", "https://8000-flyhighhher-bookingsyst-6z0zzwg7l35.ws-eu110.gitpod.io/"
 ]
 
 # Password validation
@@ -151,7 +151,7 @@ STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_URL = '/static/'
+MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type

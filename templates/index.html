@@ -4,7 +4,7 @@
 {% block content %}
 
 <div id="hero-image" class="container-fluid">
-    <img id="ekstedt_main_boxes" src="static/images/ekstedt_main_boxes.png" alt="ekstedt_boxes1">
+    <img id="ekstedt_main_boxes" src="{% static 'images/ekstedt_main_boxes.png' %}" alt="ekstedt_boxes1">
         <h1>This site is made for educational purposes only</h1>
         <p>All rights for pictures and inspiration for design is reserved for Ekstedt restaurant.</p>
 </div>
@@ -12,7 +12,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-5">
-            <img src="static/images/twopeople.webp" class="img-fluid" alt="Two People Image">
+            <img src="{% static 'images/twopeople.webp' %}" class="img-fluid" alt="Two People Image">
         </div>
         <div class="col-5">
             <div class="twopeople_text">
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="col-5">
-                <img src="static/images/shrimpfire.jpg" class="img-fluid" alt="Shrimp on fire">
+                <img src="{% static 'images/shrimpfire.jpg'%}" class="img-fluid" alt="Shrimp on fire">
             </div>
         </div>
     </div>
@@ -50,7 +50,7 @@
                 <p>At Ekstedt, we use ancient Scandinavian cooking techniques to make contemporary food with
                     carefully selected seasonal ingredients and Swedish flavors.</p>
                 <p><a href="{% url 'booking:menu' %}">| Read more</a></p>
-                <img src="static/images/cookingarea.jpg" class="img-fluid" alt="Cooking area">
+                <img src="{% static 'images/cookingarea.jpg' %}" class="img-fluid" alt="Cooking area">
                 <br>
                 <h3 class="text-center"><a href="{% url 'booking:bookings' %}">Make your reservation!</a></h3>
             </div>
