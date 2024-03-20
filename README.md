@@ -185,7 +185,7 @@ Epics and user stories were registered using [GitHub](https://github.com/). As U
 <summary>Sprint Details</summary>
 
 * **KANBAN BOARD**<br><br>
-    <img src="static/images/...." width="60%"><br><br>
+    <img src="static/images/kanban_board.png" width="60%"><br><br>
 
 * **MVP Epics and Stories:**<br>
 
@@ -247,14 +247,14 @@ Every client that is authenticated can access the "Booking" page where they have
     * Select the booking which leads to the booking details page;<br>
 <br><br>
 
-<img src=""><br><br>
+<img src="static/images/bookingslistuser.png"><br><br>
 
 * From "Details" view they can:
     * View the booking details;<br>
     * Select to update their booking;<br>
     * Select to delete their booking;<br>
 
-<img src=""><br><br>
+<img src="static/images/bookingdetails.png"><br><br>
 
 #### Staff bookings management
 
@@ -266,7 +266,7 @@ Staff users that are authenticated can acces the "Booking" page where they have 
     * Create a new booking;<br>
 <br><br>
 
-<img src=""><br><br>
+<img src="static/images/staffbookinglist.png"><br><br>
 
 #### Create Bookings
 
@@ -283,7 +283,7 @@ Every user that is authenticated can access the *Booking* page for making a book
         * Saturday: "12:00", "15:30" and "19:00"<br><br>
     * The users are also able to add their email and notes about the booking, which are optional;<br><br>
 
-<img src=""><br><br>
+<img src="static/images/createbooking.png"><br><br>
      
 * In case of a successfull booking the user will be redirected to the bookings list page, where also a message will appear.
 
@@ -291,29 +291,31 @@ Every user that is authenticated can access the *Booking* page for making a book
 
 The "Menu" page provides the users information about the restaurants menu and price. Where they can also click onto a link, which leads them to the wine list on an external site.
 
-<img src=""><br><br>
+<img src="static/images/menupage.png"><br><br>
 
 #### History
 
 The "History" page includes a brief history about the restaurant and the owner, explaining where it all began.
 
-<img src=""><br><br>
+<img src="static/images/historypage.png"><br><br>
 
 #### Contact
 
 The "Contact" page includes information about how to contact the restaurant and where it is located.
 
-<img src=""><br><br>
+<img src="static/images/contactpage.png"><br><br>
 
 #### Profile
 
 The "Profile" page includes information for the user about their past bookings and their user details.
 
-<img src=""><br><br>
+<img src="static/images/profilepage.png"><br><br>
 
 #### Admin Interface
 
 The admin interface includes capabilities for the admin(superuser) to add and remove tables, users and bookings. While also provides the capability for the admin and staff members to confirm and approve bookings. There is also a BookingHistory functionality which provides details about confirmation/rejection of the bookings.
+
+<img src="static/images/admininter.png"><br><br>
 
 #### Potential Future Features
 
@@ -323,6 +325,20 @@ The admin interface includes capabilities for the admin(superuser) to add and re
 * On-site waiting list feature for making it easier to keep track on the upcoming bookings and being on track on customer satisfaction. 
 
 ## Responsive Layout and Design
+
+The project has been designed to all types of devices using Bootstrap predefined breakpoints. A custom breakpoint of max-width: 768px was made for devices where the design did not fit.
+
+**Tested Devices:**
+
+- Samsung Galaxy S 23
+- Samsung Galaxy S 22
+- MSI GL62M 7RDX Laptop
+
+**Devices Through Inspection:**
+
+- Samsung Galaxy S8 +
+- IPhone 12 Pro
+- IPad Pro
 
 ## Tools Used
 
@@ -341,3 +357,77 @@ The admin interface includes capabilities for the admin(superuser) to add and re
 [W.A.V.E](https://wave.webaim.org/) - for testing accessibility.<br>
 [Cloudinary](https://cloudinary.com/) - for storing static data.<br>
 [Chrome Lighthouse Extension] - for testing performance.<br>
+
+### Python Packages
+
+* Django (Framework)
+* django-allauth (Library)
+* Cloudinary (Library)
+* Gunicorn (Web Server)
+* psycopg2 (Library)
+
+### Testing
+
+The testing documentation can be found at TESTING.md
+
+## Deployment
+
+### Deploy on Heroku
+
+1. Create a Pipfile
+Enter the command `pip3 freeze > requirements.txt`, after this a file with all requirements will be created.
+
+2. Setting up Heroku
+
+* Go to Heroku website (https://www.heroku.com/)
+* Login to Heroku and choose *Create App*
+* Click *New* and  *Create a New App*
+* Choose an application name and location.
+* Go to the *Resources* tab 
+* From the Resources list select *Heroku Postgres*
+* Navigate to the *Deploy* tab
+* Click on *Connect to GitHub* and search for your repository
+* Navigate to the *Settings* tab
+* Reveal Config Vars and add your Cloudinary, DataBase URL (from Heroku-Postgres) and Secret Key.
+
+3. Deployment on Heroku
+
+* Go to the deploy tab.
+* Choose the main branch for deploying. It is up to you if you wish to click on automatic deployments. In this app development, this was not done and the application was deployed manually.
+* Select the manual Deploy to build the app.
+
+### Forking the repository
+
+In order to create a copy of the repository on your account and change it without affecting the original project, use<b>Fork</b> directly from GitHub:
+- On [Booking-System-Ekstedt Repository](https://github.com/FlyHighhher/booking-system-ekstedt.git), press <i>Fork</i> in the top right of the page.
+- A forked version of the project will appear in your repository.
+<br></br>
+
+### Clone the repository
+
+For creating a clone of the repository on your local machine, use <b>Clone:</b>
+- On [My Repository Page](https://github.com/FlyHighhher/booking-system-ekstedt.git), click the <i>Code</i> green button, right above the code window.
+- You can choose from <i>HTTPS, SSH and GitHub CLI</i> format and copy (preferably <i>HTTPS</i>)
+- In your <i>IDE</i> open <i>Git Bash</i>
+- Enter the command <code>git clone</code> followed by the copied URL.
+- Your clone was created.
+<hr>
+
+## Credits
+
+### Content
+
+The inspiration was taken from a restaurant that is based in Stockholm. [Ekstedt Restaurant](https://ekstedt.nu/)
+
+### Code
+
+* Help with Bootstrap from their own [Documentation](https://getbootstrap.com/)
+* Code from Christian Göran's project [Dome-Restaurant-Repo](https://github.com/christiangoran/dome-restaurant-repo)
+* Code from Iasmina Pal's project [Italianissimo-Restaurant-Repo](https://github.com/useriasminna/italianissimo-booking-website)
+* A lot of help was Code Institute's walkthrough study materials and projects themselves.
+
+## Acknowledgements
+
+- Code Institute for providing a great course.<br>
+- My mentor David Bowers for helping me with questions and providing valuable tips through the project.<br>
+- The Ekstedt Restaurant itself for providing great inspiration.<br>
