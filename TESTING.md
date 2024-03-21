@@ -502,3 +502,32 @@ The website was tested on different browsers for assuring the features work acco
 
 ## Code Validation
 ### HTML
+
+The HTML code on the website was validated using [W3 Markup Validator](https://validator.w3.org/).<br>
+At the time of deployment the validation have the following outcome:<br><br>
+
+<img src="static/images/html_validation.png" width="40%"><br><br>
+
+### CSS
+
+The code was validated using [W3 JigSaw Validator](https://jigsaw.w3.org/css-validator/)<br>
+At the time of deployment the validation for *style.css* has the following outcome:<br><br>
+
+<img src="static/images/jigsaw_validation.png" width="40%"><br><br>
+
+### JavaScript
+
+The code was validated using [JS Hint](https://jshint.com/)
+No errors were found.
+
+Metrics:
+There are 3 functions in this file.
+Function with the largest signature take 1 arguments, while the median is 0.
+Largest function has 6 statements in it, while the median is 4.
+The most complex function has a cyclomatic complexity value of 1 while the median is 1.
+
+### Python
+
+The Python code was tested using [Coding Institutes Python Linter](https://pep8ci.herokuapp.com/).<br>
+When errors were found they they were straight fixed in the code.
+

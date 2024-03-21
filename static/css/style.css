@@ -3,6 +3,7 @@ body, .navbar {
     background-image: url("https://res.cloudinary.com/dpdqklc83/image/upload/v1710858993/static/images/charcoal_gray.e3b16f55e692.png");
     background-size: cover;
     background-position: center center;
+    background-color: black;
 }
 
 .brand {
