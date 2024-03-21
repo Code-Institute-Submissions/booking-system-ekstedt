@@ -2,7 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse, \
     HttpResponseRedirect, Http404, \
-    HttpResponseNotFound, HttpResponseServerError
+    HttpResponseNotFound, HttpResponseServerError, \
+    HttpResponseForbidden
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.db import models
@@ -234,3 +235,9 @@ class DeleteBooking(generic.edit.DeleteView):
         """
         messages.success(self.request, BOOKING_SUCCESSFUL_DELETE)
         return super().form_valid(form)
+
+def csrf_failure(request, reason=""):
+    """
+    Custom view to handle CSRF verification failures.
+    """
+    return render(request, 'csrf_failure.html', status=403)

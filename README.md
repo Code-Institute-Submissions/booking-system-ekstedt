@@ -20,15 +20,16 @@ The fully deployed project can be accessed at [this link](https://booking-system
         -[Visual Effects](#visual-effects)
 * [Agile Methodology](#agile-methodology)
 * [Features](#features)
-    + [Existing Features](#existing-features)
-        - [User Registration and Authentication]
-        - [Booking Interface]
-        - [Feedback and Confirmation]
-        - [Admin Interface]
-        - [Database Integration]
-        - [Basic Front-End Design]
-        - [Testing]
-    + [Future feature considerations](#future-feature-considerations)
+    + [Existing Features and sub pages](#existing-features)
+        - [Customer bookings management](#customer-bookings-management)
+        - [Staff bookings management](#staff-bookings-management)
+        - [Create bookings](#create-bookings)
+        - [Menu](#menu)
+        - [History](#history)
+        - [Contact](#contact)
+        - [Profile](#profile)
+        - [Admin Interface](#admin-interface)
+    + [Potential future features](#potential-future-features)
 * [Responsive Layout And Design](#responsive-layout-and-design)
 * [Tools Used](#tools-used)
     + [Python Packages](#python-packages)

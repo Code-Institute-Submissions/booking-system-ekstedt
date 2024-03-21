@@ -102,8 +102,10 @@ DATABASES = {
 }
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.herokuapp.com", "https://8000-flyhighhher-bookingsyst-6z0zzwg7l35.ws-eu110.gitpod.io/"
+    "https://*.herokuapp.com", "https://8000-flyhighhher-bookingsyst-6z0zzwg7l35.ws-eu110.gitpod.io"
 ]
+
+CSRF_FAILURE_VIEW = 'booking.views.csrf_failure'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
