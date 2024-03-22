@@ -29,8 +29,7 @@ SECRET_KEY = os.environ.get("APP_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['booking-system-ekstedt-80e2fb2174de.herokuapp.com','8000-flyhighhher-bookingsyst-6z0zzwg7l35.ws-eu110.gitpod.io',
-'ui.dev/amiresponsive']
+ALLOWED_HOSTS = ['booking-system-ekstedt-80e2fb2174de.herokuapp.com','8000-flyhighhher-bookingsyst-6z0zzwg7l35.ws-eu110.gitpod.io']
 
 
 # Application definition

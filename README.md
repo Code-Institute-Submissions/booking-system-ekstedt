@@ -1,4 +1,8 @@
 # Ekstedt Booking Website
+<img src="static/images/screens.png"><br>
+<hr>
+Ekstedt Restaurant is a restaurant located in central Stockholm, it has exquisite foods and interior.
+<hr>
 
 ## Overview
 This is a project designed and developed to create a complete experience for the clients of Ekstedt Restaurant. The users are given the possibility to create a booking, the admin is capable of approving it and the staff members are meant to manage all the bookings. In order to make a booking, an account registration is needed, while considering that the staff members have special permissions for controlling the data.<br>
