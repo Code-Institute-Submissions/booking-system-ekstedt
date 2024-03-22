@@ -531,3 +531,30 @@ The most complex function has a cyclomatic complexity value of 1 while the media
 The Python code was tested using [Coding Institutes Python Linter](https://pep8ci.herokuapp.com/).<br>
 When errors were found they they were straight fixed in the code.
 
+### Accessibility
+
+The accessibility of the website was tested with [Wave](https://wave.webaim.org).
+Throughout the webpage testing there were 7 contrast errors. However since background image is being used that should not be an issue. 1 alert was issued as where the page of where we were at, the link in the navbar was shown as redunant, i decided that it will stay as it is.
+
+### Performance
+
+The performance of the website was tested with [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/)
+
+**Lighthouse Reports:**
+
+<details>
+<summary>Mobile</summary>
+
+<img src="static/images/lighthouse.png" width=60%><br><br>
+
+</details>
+
+<details>
+<summary>Desktop</summary>
+
+<img src="static/images/lighthousedesktop.png" width=60%><br><br>
+
+</details>
+
+
+
